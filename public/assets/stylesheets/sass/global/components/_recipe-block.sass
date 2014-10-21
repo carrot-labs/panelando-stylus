@@ -1,33 +1,45 @@
-@-webkit-keyframes bounce
+@-webkit-keyframes bounceDownIn
   0%
     -webkit-transform: translateY(-100%)
 
   60%
-    -webkit-transform: translateY(-10%)
-
-  70%
-    -webkit-transform: translateY(-15%)
+    -webkit-transform: translateY(0%)
 
   80%
     -webkit-transform: translateY(-5%)
 
-  90%
-    -webkit-transform: translateY(-10%)
-
   100%
     -webkit-transform: translateY(0%)
-  
 
+@-webkit-keyframes bounceDownOut
+  0%
+    -webkit-transform: translateY(0%)
+    opacity: 1
+
+  90%
+    opacity: 1    
+
+  100%
+    -webkit-transform: translateY(-100%)
+    opacity: 0
 
 .recipe-block
   a:hover
     text-decoration: none
   &:hover .caption
-    -webkit-animation: bounce 500ms ease-out
-    -moz-animation: bounce 500ms ease-out
-    -o-animation: bounce 500ms ease-out
-    animation: bounce 500ms ease-out
+    -webkit-animation: bounceDownIn 400ms ease-out
+    -moz-animation: bounceDownIn 400ms ease-out
+    -o-animation: bounceDownIn 400ms ease-out
+    animation: bounceDownIn 400ms ease-out
     opacity: 1
+
+  .caption
+    -webkit-animation: bounceDownOut 200ms ease-out
+    -moz-animation: bounceDownOut 200ms ease-out
+    -o-animation: bounceDownOut 200ms ease-out
+    animation: bounceDownOut 200ms ease-out
+    opacity: 0
+
   
 .recipe-block-title
   padding: 12px
@@ -47,6 +59,5 @@
     height: 100%
     position: absolute
     padding: 20px
-    opacity: 0
     background: $brand-primary
     color: white
