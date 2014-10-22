@@ -78,18 +78,20 @@
 
   strong, em
     display: block
-    color: $gray
+    color: $gray-dark
 
   .link
+    +transition(all .1s ease-in-out)
     float: right
     padding: 5px 7px
     background: white
     border-radius: $border-radius-base
-    border: 2px solid $gray
+    border: 2px solid $gray-dark
     font-family: $font-family-serif
     font-size: 16px
-    color: $gray
+    color: $gray-dark
     &:hover
+      +transition(all .1s ease-in-out)
       background: $brand-primary
       color: $gray-dark
       text-decoration: underline
