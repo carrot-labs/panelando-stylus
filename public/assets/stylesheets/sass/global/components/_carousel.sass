@@ -1,6 +1,42 @@
 .carousel 
-	img
-		min-width: 100%
+  img
+    min-width: 100%
 
-	.carousel-control
-		
+  .carousel-control
+
+    &.left .icon,
+    &.right .icon
+      position: absolute
+      top: 50%
+      z-index: 5
+      display: inline-block
+    
+    &.left .icon
+      left: 50%
+      margin-left: -10px
+    
+    &.right .icon
+      right: 50%
+      margin-right: -10px
+    
+    &.left .icon,
+    &.right .icon
+      width:  20px
+      height: 20px
+      margin-top: -10px
+    
+
+    @media screen and (min-width: $screen-sm-min)
+      &.left .icon,
+      &.right .icon
+        width: 30px
+        height: 30px
+        margin-top: -15px
+        font-size: 40px
+      
+      &.left .icon
+        margin-left: -15px
+      
+      &.right .icon
+        margin-right: -15px
+      
