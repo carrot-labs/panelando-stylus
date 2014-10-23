@@ -1,11 +1,45 @@
 .main-menu
-	+clearfix()
-	background: #fff
+  +clearfix()
+  background: #fff
+  box-shadow: 0 2px 2px rgba(11, 25, 28, 0.1)
+  border: 1px solid #e4e4e4
 
-	li + li
-		margin-top: 0
+  li + li
+    margin-top: 0
 
-	.nav-pills > li > a
-		font-family: $font-family-serif
-		font-size: 25px
-		color: $gray-dark
+  .nav-pills > li > a
+    border-radius: 0
+
+  li
+    border-bottom: 2px dashed #e5e5e5
+    &:last-child
+      border-bottom: none
+
+      .link-icon
+        border: none
+
+  li.active,
+  li:hover
+    a,
+    a:hover
+      background: #fff
+      color: $gray-dark
+    .link-icon
+      color: $gray-dark
+
+  a
+    background: #fff
+    font-family: $font-family-serif
+    font-size: 23px
+    color: $gray-light
+
+  .link-icon
+    position: absolute
+    top: 0
+    right: 0
+    padding: 5px 8px
+    float: right
+    background: $brand-primary
+    border-bottom: 2px dashed darken($brand-primary, 3%)
+    font-size: 30px
+    color: #fff
