@@ -56,15 +56,13 @@
   <div class="row">
     <div class="container">
       <div class="col-md-8">
-          <div class="ingredients-block">
-            <div>
-              <span class="ingredient-number">1</span>
-              <input type="text">
-            </div>
+          <div class="ingredients-block" ng-controller="IngredientsCtrl as Ingredients">
+            <div ng-repeat="ingredient in Ingredients.ingredientsList">
+              <span class="ingredient-number">{{ $index + 1 }}</span>
+              <div class="ingredient-item">{{ ingredient }}</div>
+            </div>   
 
-            <ingredients>
-              <ingredient-item></ingredient-item>
-            </ingredients>
+            <input class="ingredient-item" type="text"> 
           </div>
       </div>
     </div>
