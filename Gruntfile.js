@@ -14,17 +14,41 @@ module.exports = function(grunt) {
       }
     },
 
+    jade: {
+      compile: {
+        options: {
+          pretty: true,
+          data: {
+            debug: false
+          }
+        },
+        files: [{ 
+          cwd: 'public/layouts/',
+          src: '**/*.jade',
+          dest: 'public',
+          expand: true,
+          ext: '.html'
+        }]
+      }
+    },
+
     watch: {
       stylesheets: {
         files: ['public/assets/stylesheets/sass/**/*.sass', 'public/assets/stylesheets/sass/**/*.scss'],
         tasks: ['sass'],
       },
+      layouts: {
+        files: ['public/layouts/*.jade'],
+        tasks: ['jade'],
+      },
     },
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['sass', 'watch']);
+  grunt.registerTask('default', ['sass', 'jade', 'watch']);
+  grunt.registerTask('j', ['jade']);
 
 };
