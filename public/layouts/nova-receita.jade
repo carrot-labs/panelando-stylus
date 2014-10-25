@@ -80,15 +80,17 @@ body.page-nova-receita
 
             input.ingredient-item.editing(
               type="text",
-              ng-value="ingredient.name"
               ng-if="ingredient.editing"
+              ng-value="ingredient.name"
               ng-model="Ingredients.ingredientsList[$index].name"
-              ng-keydown="Ingredients.saveIngredient($event, $index)"
+              ng-keydown="Ingredients.saveIngredient($event, $index, true)"
+              ng-blur="Ingredients.saveIngredient($event, $index)"
+              focus="ingredient.editing"
             )  
 
           input.ingredient-item(
             type="text", 
-            placeholder="Digite o ingrediente e aperte enter",
+            placeholder="Digite o ingrediente e tecle enter",
             ng-model="Ingredients.newIngredient.name", 
             ng-keydown="Ingredients.addIngredient($event)"
           )
