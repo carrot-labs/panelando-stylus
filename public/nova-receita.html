@@ -66,8 +66,8 @@
           class="ingredient-item" 
           type="text" 
           placeholder="Digite o ingrediente e aperte enter"
-          ng-model="newIngredient" 
-          ng-keypress="Ingredients.addIngredient($event)">
+          ng-model="Ingredients.newIngredient" 
+          ng-keyup="Ingredients.addIngredient($event)">
 
           <h1>{{newIngredient}}</h1>
         </div>
