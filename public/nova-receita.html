@@ -56,14 +56,22 @@
   <div class="row">
     <div class="container">
       <div class="col-md-8">
-          <div class="ingredients-block" ng-controller="IngredientsCtrl as Ingredients">
-            <div ng-repeat="ingredient in Ingredients.ingredientsList">
-              <span class="ingredient-number">{{ $index + 1 }}</span>
-              <div class="ingredient-item">{{ ingredient }}</div>
-            </div>   
+        <div class="ingredients-block" ng-controller="IngredientsCtrl as Ingredients">
+          <div ng-repeat="ingredient in Ingredients.ingredientsList">
+            <span class="ingredient-number">{{ $index + 1 }}</span>
+            <div class="ingredient-item">{{ ingredient }}</div>
+          </div>   
 
-            <input class="ingredient-item" type="text"> 
-          </div>
+          <input 
+          class="ingredient-item" 
+          type="text" 
+          placeholder="Digite o ingrediente e aperte enter"
+          ng-model="newIngredient" 
+          ng-keypress="Ingredients.addIngredient($event)">
+
+          <h1>{{newIngredient}}</h1>
+        </div>
+
       </div>
     </div>
   </div>
