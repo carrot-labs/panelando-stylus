@@ -31,6 +31,9 @@ angular.module('panelando')
 	 * @return void
 	 */
 	this.addIngredient = function(event) {
+		/** Prevent an ingredient to be created empty */
+		if(this.newIngredient.name==='') return;
+
 		if(event.keyCode === 13) {
 			this.ingredientsList.push(this.newIngredient);
 			this.newIngredient = {name: '', editing: false};
