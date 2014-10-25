@@ -1,254 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Panelando</title>
+doctype html
+html(lang="en" ng-app="panelando")
+head
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible", content="IE=edge")
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+  title Panelando
 
-  <!-- Bootstrap -->
-  <link href="assets/stylesheets/style.css" rel="stylesheet">
+  //- Bootstrap
+  link(href="assets/stylesheets/style.css", rel="stylesheet")
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico">
+  //- Favicon
+  link(rel="shortcut icon", href="favicon.ico")
 
-  <!-- Google fonts -->
-  <link href="http://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  //- Google fonts
+  link(href="http://fonts.googleapis.com/css?family=Bitter:400,700", rel="stylesheet")
+  link(href="http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400", rel="stylesheet")
+  link(href="http://fonts.googleapis.com/css?family=Pacifico", rel="stylesheet")
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-</head>
+body.page-home
+  nav.navbar.navbar-default(role="navigation")
+    div.container
+      //- Brand and toggle get grouped for better mobile display
+      div.navbar-header
+        button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+          span.sr-only Alternar menu
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
 
-<body class="page-home">  
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Alternar menu</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          Panelando
-          <div class="navbar-brand-icon">
-            <i class="icon icon-food-1"></i>
-          </div>
-        </a>
-      </div>
+        a.navbar-brand(href="#") 
+          |Panelando
+          div.navbar-brand-icon
+            i.icon.icon-food-1
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Cadastrar</a></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-  </nav>
+      //- Collect the nav links, forms, and other content for toggling
+      div.collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href="#") Login
+          li
+            a(href="#") Cadastrar
 
-  <div class="row">
-    <div class="container">
-      <div class="col-md-4">
-        <!-- Main menu -->
-        <nav class="main-menu" role="navigation">
-          <ul class="nav nav-pills nav-stacked">
-            <li class="active">
-              <a href="#">
-                Home
-                <div class="link-icon">
-                  <i class="icon icon-shop"></i>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Receitas
-                <div class="link-icon">
-                  <i class="icon icon-food-1"></i>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Nova Receita
-                <div class="link-icon">
-                  <i class="icon icon-doc-1"></i>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </nav><!-- /.main-menu -->
-      </div>
+  div.row
+    div.container
+      div.col-md-4
+        //-- Main menu
+        nav.main-menu(role="navigation")
+          ul.nav.nav-pills.nav-stacked
+            li.active
+              a(href="#")
+                |Home
+                div.link-icon
+                  i.icon.icon-shop
 
-      <div class="col-md-8">
-        <!-- Display recipe images on a carousel -->
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-          </ol>
+            li
+              a(href="#")
+                |Receitas
+                div.link-icon
+                  i.icon.icon-food-1
 
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="http://dev.munfactory.com/cookbook/images/steak-with-potatoes.jpg" alt="Primeira Receita">
-              <div class="carousel-caption">
-                <span class="h1">Bife com Batatas</span>
-              </div>
-            </div>
+            li
+              a(href="#")
+                |Nova Receita
+                div.link-icon
+                  i.icon.icon-doc-1
 
-            <div class="item">
-              <img src="http://dev.munfactory.com/cookbook/images/sausage-cabbage-and-tomato-1.jpg" alt="Segunda Receita">
-              <div class="carousel-caption">
-                <span class="h1">Virado de Repolho</span>
-              </div>
-            </div>
+      div.col-md-8
+        //-- Display recipe images on a carousel
+        div.carousel.slide(id="carousel-example-generic", data-ride="carousel")
+          //-- Carousel indicators
+          ol.carousel-indicators
+            li.active(data-target="#carousel-example-generic", data-slide-to="0")
+            li(data-target="#carousel-example-generic", data-slide-to="1")
+            li(data-target="#carousel-example-generic", data-slide-to="2")
 
-            <div class="item">
-              <img src="http://dev.munfactory.com/cookbook/images/4646066888_397b6d0301_o.jpg" alt="Segunda Receita">
-              <div class="carousel-caption">
-                <span class="h1">Sanduíche de Filet Mignon</span>
-              </div>
-            </div>
-          </div><!-- /.carouse-inner -->
+          //-- Wrapper for slides
+          div.carousel-inner
+            div.item.active
+              img(src="http://dev.munfactory.com/cookbook/images/steak-with-potatoes.jpg", alt="Primeira Receita")
+              div.carousel-caption
+                span.h1 Bife com Batatas
 
-          <!-- Controls -->
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="icon icon-left-open"></span>
-          </a>
-          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="icon icon-right-open"></span>
-          </a>
-        </div><!-- /.carousel -->
-      </div>
-    </div><!-- /.container -->
-  </div><!-- /.row -->
+            div.item
+              img(src="http://dev.munfactory.com/cookbook/images/sausage-cabbage-and-tomato-1.jpg", alt="Segunda Receita")
+              div.carousel-caption
+                span.h1 Virado de Repolho
 
-  <div class="row l-main-section">
-    <div class="container">
-      <div class="col-md-4">
-        <div class="recipe-block">
-          <a href="index.html">
-            <div class="recipe-title">
-              Bife com Batatas
-            </div>
+            div.item
+              img(src="http://dev.munfactory.com/cookbook/images/4646066888_397b6d0301_o.jpg", alt="Segunda Receita")
+              div.carousel-caption
+                span.h1 Sanduíche de Filet Mignon
 
-            <div class="recipe-image">
-              <div class="recipe-caption">
-                <div class="item">
-                  <i class="icon icon-clock-1"></i>
-                  <span>15 Min</span>
-                </div>
-                <div class="item">
-                  <i class="icon icon-user-1"></i>
-                  <span>6 Porções</span>
-                </div>
-                <div class="item">
-                  <i class="icon icon-beaker-1"></i>
-                  <span>Fácil</span>
-                </div>
-              </div>
+          //- Controls
+          a.carousel-control.left(href="#carousel-example-generic", role="button", data-slide="prev")
+            span.icon.icon-left-open
 
-              <img class="img-responsive" src="assets/images/static/steak-with-potatoes.jpg" height="410" width="620">
-            </div>
+          a.carousel-control.right(href="#carousel-example-generic", role="button", data-slide="next")
+            span.icon.icon-right-open
 
-            <div class="recipe-footer">
-              <div class="pull-left">
-                <strong>Guilherme Coelho</strong>
-                <em>14/12/2014</em>
-              </div>
-              <a class="link" href="#"><i class="icon icon-plus-squared-alt"></i>Ver Receita</a>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="recipe-block">
-          <a href="index.html">
-            <div class="recipe-title">
-              Sanduíche de Filet Mignon
-            </div>
+  div.row.l-main-section
+    div.container
+      div.col-md-4
+        div.recipe-block
+          a(href="index.html")
+            div.recipe-title
+              |Bife com Batatas
 
-            <div class="recipe-image">
-              <div class="recipe-caption">
-                <div class="item">
-                  <i class="icon icon-clock-1"></i>
-                  <span>15 Min</span>
-                </div>
-                <div class="item">
-                  <i class="icon icon-user-1"></i>
-                  <span>6 Porções</span>
-                </div>
-                <div class="item">
-                  <i class="icon icon-beaker-1"></i>
-                  <span>Fácil</span>
-                </div>
-              </div>
+            div.recipe-image
+              div.recipe-caption
+                div.item
+                  i.icon.icon-clock-1
+                  span 15 Min
 
-              <img class="img-responsive" src="assets/images/static/filet-mignon-sandwich.jpg">
-            </div>
+                div.item
+                  i.icon.icon-user-1
+                  span 6 Porções
 
-            <div class="recipe-footer">
-              <div class="pull-left">
-                <strong>Guilherme Coelho</strong>
-                <em>14/12/2014</em>
-              </div>
-              <a class="link" href="#"><i class="icon icon-plus-squared-alt"></i>Ver Receita</a>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="recipe-block">
-          <a href="index.html">
-            <div class="recipe-title">
-              Virado de Repolho
-            </div>
+                div.item
+                  i.icon.icon-beaker-1
+                  span Fácil
 
-            <div class="recipe-image">
-              <div class="recipe-caption">
-                <div class="item">
-                  <i class="icon icon-clock-1"></i>
-                  <span>15 Min</span>
-                </div>
-                <div class="item">
-                  <i class="icon icon-user-1"></i>
-                  <span>6 Porções</span>
-                </div>
-                <div class="item">
-                  <i class="icon icon-beaker-1"></i>
-                  <span>Fácil</span>
-                </div>
-              </div>
+              img.img-responsive(src="assets/images/static/steak-with-potatoes.jpg")
 
-              <img class="img-responsive" src="assets/images/static/sausage-cabbage-and-tomato-1.jpg">
-            </div>
+            div.recipe-footer
+              div.pull-left
+                strong Guilherme Coelho
+                em 14/12/2014
+              a.link(href="#")
+                i.icon.icon-plus-squared-alt
+                |Ver Receita
 
-            <div class="recipe-footer">
-              <div class="pull-left">
-                <strong>Guilherme Coelho</strong>
-                <em>14/12/2014</em>
-              </div>
-              <a class="link" href="#"><i class="icon icon-plus-squared-alt"></i>Ver Receita</a>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div><!-- /.container -->
-  </div><!-- /.row -->
 
-  <!-- jQuery (necessary for Bootstrap"s JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="assets/javascripts/bootstrap.min.js"></script>
-</body>
-</html>
+      div.col-md-4
+        div.recipe-block
+          a(href="index.html")
+            div.recipe-title
+              |Sanduíche de Filet Mignon
+
+            div.recipe-image
+              div.recipe-caption
+                div.item
+                  i.icon.icon-clock-1
+                  span 15 Min
+
+                div.item
+                  i.icon.icon-user-1
+                  span 6 Porções
+
+                div.item
+                  i.icon.icon-beaker-1
+                  span Fácil
+
+              img.img-responsive(src="assets/images/static/filet-mignon-sandwich.jpg")
+
+            div.recipe-footer
+              div.pull-left
+                strong Guilherme Coelho
+                em 14/12/2014
+              a.link(href="#")
+                i.icon.icon-plus-squared-alt
+                |Ver Receita
+
+
+      div.col-md-4
+        div.recipe-block
+          a(href="index.html")
+            div.recipe-title
+              |Virado de Repolho
+
+            div.recipe-image
+              div.recipe-caption
+                div.item
+                  i.icon.icon-clock-1
+                  span 15 Min
+
+                div.item
+                  i.icon.icon-user-1
+                  span 6 Porções
+
+                div.item
+                  i.icon.icon-beaker-1
+                  span Fácil
+
+              img.img-responsive(src="assets/images/static/sausage-cabbage-and-tomato-1.jpg")
+
+            div.recipe-footer
+              div.pull-left
+                strong Guilherme Coelho
+                em 14/12/2014
+              a.link(href="#")
+                i.icon.icon-plus-squared-alt
+                |Ver Receita
+
+
+  //- jQuery (necessary for Bootstrap"s JavaScript plugins)
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  //- Include all compiled plugins (below), or include individual files as needed
+  script(src="assets/javascripts/bootstrap.min.js")
+  //- Angular framework
+  script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js")
+  //- Angular components
+  script(src="app/app.js")
+  script(src="app/controllers.js")
+  script(src="app/directives.js")
