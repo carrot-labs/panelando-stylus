@@ -47,13 +47,13 @@
           <div ng-repeat="ingredient in Ingredients.ingredientsList"><span class="ingredient-number">
                
               {{ $index + 1 }}</span>
-            <div ng-click="Ingredients.editIngredient($index)" class="ingredient-item">
+            <div ng-if="!ingredient.editing" ng-click="Ingredients.editIngredient($index)" class="ingredient-item">
                
-              {{ ingredient }}
+              {{ ingredient.name }}
             </div>
-            <input type="text" value="{{ingredient}}" ng-model="Ingredients.editingIngredient[$index]" ng-keydown="Ingredients.saveIngredient($event, $index)">
+            <input type="text" ng-value="ingredient.name" ng-if="ingredient.editing" ng-model="Ingredients.ingredientsList[$index].name" ng-keydown="Ingredients.saveIngredient($event, $index)" class="ingredient-item editing">
           </div>
-          <input type="text" placeholder="Digite o ingrediente e aperte enter" ng-model="Ingredients.newIngredient" ng-keydown="Ingredients.addIngredient($event)" class="ingredient-item">
+          <input type="text" placeholder="Digite o ingrediente e aperte enter" ng-model="Ingredients.newIngredient.name" ng-keydown="Ingredients.addIngredient($event)" class="ingredient-item">
         </div>
       </div>
     </div>

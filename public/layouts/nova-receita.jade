@@ -72,23 +72,26 @@ body.page-nova-receita
           div(ng-repeat="ingredient in Ingredients.ingredientsList")
             span.ingredient-number 
               |{{ $index + 1 }}
-            div.ingredient-item(ng-click="Ingredients.editIngredient($index)") 
-              |{{ ingredient }}
-  
-            input(
-              type="text", 
-              value="{{ingredient}}", 
-              ng-model="Ingredients.editingIngredient[$index]", 
+            div.ingredient-item(
+              ng-if="!ingredient.editing"
+              ng-click="Ingredients.editIngredient($index)"
+            ) 
+              |{{ ingredient.name }}
+
+            input.ingredient-item.editing(
+              type="text",
+              ng-value="ingredient.name"
+              ng-if="ingredient.editing"
+              ng-model="Ingredients.ingredientsList[$index].name"
               ng-keydown="Ingredients.saveIngredient($event, $index)"
-            )
+            )  
 
           input.ingredient-item(
             type="text", 
             placeholder="Digite o ingrediente e aperte enter",
-            ng-model="Ingredients.newIngredient", 
+            ng-model="Ingredients.newIngredient.name", 
             ng-keydown="Ingredients.addIngredient($event)"
           )
-
 
 
 
