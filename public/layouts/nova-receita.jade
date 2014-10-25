@@ -1,0 +1,74 @@
+doctype html
+html(lang="en" ng-app="panelando")
+head
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible", content="IE=edge")
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+  title Panelando
+
+  //- Bootstrap
+  link(href="assets/stylesheets/style.css", rel="stylesheet")
+
+  //- Favicon
+  link(rel="shortcut icon", href="favicon.ico")
+
+  //- Google fonts
+  link(href="http://fonts.googleapis.com/css?family=Bitter:400,700", rel="stylesheet")
+  link(href="http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400", rel="stylesheet")
+  link(href="http://fonts.googleapis.com/css?family=Pacifico", rel="stylesheet")
+
+
+body(class="page-nova-receita")
+  nav(class="navbar navbar-default", role="navigation")
+    div(class="container")
+      //- Brand and toggle get grouped for better mobile display
+      div(class="navbar-header")
+        button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+          span(class="sr-only") Alternar menu
+          span(class="icon-bar")
+          span(class="icon-bar")
+          span(class="icon-bar")
+
+        a(class="navbar-brand", href="#") Panelando
+          div(class="navbar-brand-icon")
+            i(class="icon icon-food-1")
+
+      //- Collect the nav links, forms, and other content for toggling
+      div(class="collapse navbar-collapse", id="bs-example-navbar-collapse-1")
+        ul(class="nav navbar-nav navbar-right")
+          li
+            a(href="#") Login
+          li
+            a(href="#") Cadastrar
+        
+
+  div(class="row")
+    div(class="container")
+      div(class="col-md-8")
+        div(class="ingredients-block", ng-controller="IngredientsCtrl as Ingredients")
+          div(ng-repeat="ingredient in Ingredients.ingredientsList")
+            span(class="ingredient-number") {{ $index + 1 }}
+            div(class="ingredient-item", ng-click="Ingredients.editIngredient($index)") {{ ingredient }}
+  
+            input(type="text", value="{{ingredient}}", ng-model="Ingredients.editingIngredient[$index]", ng-keydown="Ingredients.saveIngredient($event, $index)")
+
+          input(class="ingredient-item",
+            type="text", 
+            placeholder="Digite o ingrediente e aperte enter",
+            ng-model="Ingredients.newIngredient", 
+            ng-keydown="Ingredients.addIngredient($event)"
+          )
+
+
+
+
+  //- jQuery (necessary for Bootstrap"s JavaScript plugins)
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  //- Include all compiled plugins (below), or include individual files as needed
+  script(src="assets/javascripts/bootstrap.min.js")
+  //- Angular framework
+  script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js")
+  //- Angular components
+  script(src="app/app.js")
+  script(src="app/controllers.js")
+  script(src="app/directives.js")
