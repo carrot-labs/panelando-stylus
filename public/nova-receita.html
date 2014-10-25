@@ -15,7 +15,9 @@
   <nav role="navigation" class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle collapsed"><span class="sr-only">Alternar menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">Panelando
+        <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle collapsed"><span class="sr-only">Alternar menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">
+           
+          Panelando
           <div class="navbar-brand-icon"><i class="icon icon-food-1"></i></div></a>
       </div>
       <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
@@ -28,10 +30,27 @@
   </nav>
   <div class="row">
     <div class="container">
+      <div class="col-md-4">
+        <nav role="navigation" class="main-menu">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="index.html">Home
+                <div class="link-icon"><i class="icon icon-shop"></i></div></a></li>
+            <li><a href="receitas.html">Receitas
+                <div class="link-icon"><i class="icon icon-food-1"></i></div></a></li>
+            <li class="active"><a href="nova-receita.html">Nova Receita
+                <div class="link-icon"><i class="icon icon-doc-1"></i></div></a></li>
+          </ul>
+        </nav>
+      </div>
       <div class="col-md-8">
         <div ng-controller="IngredientsCtrl as Ingredients" class="ingredients-block">
-          <div ng-repeat="ingredient in Ingredients.ingredientsList"><span class="ingredient-number">{{ $index + 1 }}</span>
-            <div ng-click="Ingredients.editIngredient($index)" class="ingredient-item">{{ ingredient }}</div>
+          <div ng-repeat="ingredient in Ingredients.ingredientsList"><span class="ingredient-number">
+               
+              {{ $index + 1 }}</span>
+            <div ng-click="Ingredients.editIngredient($index)" class="ingredient-item">
+               
+              {{ ingredient }}
+            </div>
             <input type="text" value="{{ingredient}}" ng-model="Ingredients.editingIngredient[$index]" ng-keydown="Ingredients.saveIngredient($event, $index)">
           </div>
           <input type="text" placeholder="Digite o ingrediente e aperte enter" ng-model="Ingredients.newIngredient" ng-keydown="Ingredients.addIngredient($event)" class="ingredient-item">

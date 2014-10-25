@@ -17,41 +17,72 @@ head
   link(href="http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400", rel="stylesheet")
   link(href="http://fonts.googleapis.com/css?family=Pacifico", rel="stylesheet")
 
-body(class="page-nova-receita")
-  nav(class="navbar navbar-default", role="navigation")
-    div(class="container")
+body.page-nova-receita
+  nav.navbar.navbar-default(role="navigation")
+    div.container
       //- Brand and toggle get grouped for better mobile display
-      div(class="navbar-header")
-        button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
-          span(class="sr-only") Alternar menu
-          span(class="icon-bar")
-          span(class="icon-bar")
-          span(class="icon-bar")
+      div.navbar-header
+        button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+          span.sr-only Alternar menu
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
 
-        a(class="navbar-brand", href="#") Panelando
-          div(class="navbar-brand-icon")
-            i(class="icon icon-food-1")
+        a.navbar-brand(href="#") 
+          |Panelando
+          div.navbar-brand-icon
+            i.icon.icon-food-1
 
       //- Collect the nav links, forms, and other content for toggling
-      div(class="collapse navbar-collapse", id="bs-example-navbar-collapse-1")
-        ul(class="nav navbar-nav navbar-right")
+      div.collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
+        ul.nav.navbar-nav.navbar-right
           li
             a(href="#") Login
           li
             a(href="#") Cadastrar
-        
+   
 
-  div(class="row")
-    div(class="container")
-      div(class="col-md-8")
-        div(class="ingredients-block", ng-controller="IngredientsCtrl as Ingredients")
+  div.row
+    div.container
+      div.col-md-4
+        //-- Main menu
+        nav.main-menu(role="navigation")
+          ul.nav.nav-pills.nav-stacked
+            li
+              a(href="index.html")
+                |Home
+                div.link-icon
+                  i.icon.icon-shop
+
+            li
+              a(href="receitas.html")
+                |Receitas
+                div.link-icon
+                  i.icon.icon-food-1
+
+            li.active
+              a(href="nova-receita.html")
+                |Nova Receita
+                div.link-icon
+                  i.icon.icon-doc-1
+
+
+      div.col-md-8
+        div.ingredients-block(ng-controller="IngredientsCtrl as Ingredients")
           div(ng-repeat="ingredient in Ingredients.ingredientsList")
-            span(class="ingredient-number") {{ $index + 1 }}
-            div(class="ingredient-item", ng-click="Ingredients.editIngredient($index)") {{ ingredient }}
+            span.ingredient-number 
+              |{{ $index + 1 }}
+            div.ingredient-item(ng-click="Ingredients.editIngredient($index)") 
+              |{{ ingredient }}
   
-            input(type="text", value="{{ingredient}}", ng-model="Ingredients.editingIngredient[$index]", ng-keydown="Ingredients.saveIngredient($event, $index)")
+            input(
+              type="text", 
+              value="{{ingredient}}", 
+              ng-model="Ingredients.editingIngredient[$index]", 
+              ng-keydown="Ingredients.saveIngredient($event, $index)"
+            )
 
-          input(class="ingredient-item",
+          input.ingredient-item(
             type="text", 
             placeholder="Digite o ingrediente e aperte enter",
             ng-model="Ingredients.newIngredient", 
