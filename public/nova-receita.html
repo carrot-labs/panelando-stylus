@@ -59,7 +59,9 @@
         <div class="ingredients-block" ng-controller="IngredientsCtrl as Ingredients">
           <div ng-repeat="ingredient in Ingredients.ingredientsList">
             <span class="ingredient-number">{{ $index + 1 }}</span>
-            <div class="ingredient-item">{{ ingredient }}</div>
+            <div class="ingredient-item" ng-click="Ingredients.editIngredient($index)">{{ ingredient }}</div>
+  
+            <input type="text" value="{{ingredient}}" ng-model="Ingredients.editingIngredient[$index]" ng-keydown="Ingredients.saveIngredient($event, $index)">
           </div>   
 
           <input 
@@ -67,9 +69,7 @@
           type="text" 
           placeholder="Digite o ingrediente e aperte enter"
           ng-model="Ingredients.newIngredient" 
-          ng-keyup="Ingredients.addIngredient($event)">
-
-          <h1>{{newIngredient}}</h1>
+          ng-keydown="Ingredients.addIngredient($event)">
         </div>
 
       </div>
