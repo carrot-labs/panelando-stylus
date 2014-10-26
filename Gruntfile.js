@@ -22,13 +22,16 @@ module.exports = function(grunt) {
             debug: false
           }
         },
-        files: [{ 
-          cwd: 'public/layouts/',
-          src: '**/*.jade',
-          dest: 'public',
-          expand: true,
-          ext: '.html'
-        }]
+        files: [
+          { 
+            cwd: 'public/layouts/',
+            src: '**/*.jade',
+            dest: 'public/views',
+            expand: true,
+            ext: '.html'
+          },
+          {"public/index.html": "public/layouts/index.jade"}
+        ]
       }
     },
 

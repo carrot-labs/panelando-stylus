@@ -3,6 +3,14 @@
  */
 angular.module('panelando')
 
+.controller('HomeController', function($scope) {
+
+})
+
+.controller('ReceitasController', function($scope) {
+
+})
+
 
 /**
  * Ingredients Controller
