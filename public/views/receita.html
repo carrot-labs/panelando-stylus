@@ -31,18 +31,7 @@
         </nav>
       </div>
       <div class="col-md-8">
-        <div ng-controller="IngredientsCtrl as Ingredients" class="ingredients-block">
-          <div ng-repeat="ingredient in Ingredients.ingredientsList"><span class="ingredient-number">
-               
-              {{ $index + 1 }}</span>
-            <div ng-if="!ingredient.editing" ng-click="Ingredients.editIngredient($index)" class="ingredient-item">
-               
-              {{ ingredient.name }}
-            </div>
-            <input type="text" ng-if="ingredient.editing" ng-value="ingredient.name" ng-model="Ingredients.ingredientsList[$index].name" ng-keydown="Ingredients.saveIngredient($event, $index, true)" ng-blur="Ingredients.saveIngredient($event, $index)" focus="ingredient.editing" class="ingredient-item editing"/>
-          </div>
-          <input type="text" placeholder="Digite o ingrediente e tecle enter" ng-model="Ingredients.newIngredient.name" ng-keydown="Ingredients.addIngredient($event)" class="ingredient-item"/>
-        </div>
+        <h1>Receita {{test}}</h1>
       </div>
     </div>
   </div>

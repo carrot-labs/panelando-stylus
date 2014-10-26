@@ -49,30 +49,5 @@ div.page-nova-receita
 
 
       div.col-md-8
-        div.ingredients-block(ng-controller="IngredientsCtrl as Ingredients")
-          div(ng-repeat="ingredient in Ingredients.ingredientsList")
-            span.ingredient-number 
-              |{{ $index + 1 }}
-            div.ingredient-item(
-              ng-if="!ingredient.editing"
-              ng-click="Ingredients.editIngredient($index)"
-            ) 
-              |{{ ingredient.name }}
-
-            input.ingredient-item.editing(
-              type="text",
-              ng-if="ingredient.editing"
-              ng-value="ingredient.name"
-              ng-model="Ingredients.ingredientsList[$index].name"
-              ng-keydown="Ingredients.saveIngredient($event, $index, true)"
-              ng-blur="Ingredients.saveIngredient($event, $index)"
-              focus="ingredient.editing"
-            )  
-
-          input.ingredient-item(
-            type="text", 
-            placeholder="Digite o ingrediente e tecle enter",
-            ng-model="Ingredients.newIngredient.name", 
-            ng-keydown="Ingredients.addIngredient($event)"
-          )
+        h1 Receita {{test}}
 

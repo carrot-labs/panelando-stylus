@@ -3,13 +3,17 @@
  */
 angular.module('panelando')
 
-.controller('HomeController', function($scope) {
+.controller('HomeController', ['$scope', function($scope) {
 
-})
+}])
 
-.controller('ReceitasController', function($scope) {
+.controller('ReceitasController', ['$scope', function($scope) {
 
-})
+}])
+
+.controller('ReceitaController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	$scope.test = $routeParams.id;
+}])
 
 
 /**

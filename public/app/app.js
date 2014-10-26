@@ -16,8 +16,15 @@ angular.module('panelando', ['ngRoute'])
 			controller: 'ReceitasController'
 		})
 
+		.when('/receitas/:id',{
+			templateUrl: 'views/receita.html',
+			controller: 'ReceitaController'
+		})
+
 		.when('/receitas/nova',{
 			templateUrl: 'views/nova-receita.html',
 			controller: 'ReceitasController'
-		});
+		})
+
+		.otherwise({redirectTo: '/'});
 }])
