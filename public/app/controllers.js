@@ -12,7 +12,16 @@ angular.module('panelando')
 }])
 
 .controller('ReceitaController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-	$scope.test = $routeParams.id;
+	$scope.id = $routeParams.id;
+
+	$http({
+	  url: "http://guilhermecoelho.hol.es/test.php", 
+	  method: "POST",
+	  data: {id: $scope.id}
+ 	}).success(function(data, status) {
+ 		console.log(data);
+ 		console.log(status);
+ 	});
 }])
 
 
