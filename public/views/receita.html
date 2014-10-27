@@ -30,8 +30,12 @@
           </ul>
         </nav>
       </div>
-      <div class="col-md-8">
-        <h1>Receita {{test}}</h1>
+      <div ng-if="Receita" class="col-md-8">
+        <h1>{{Receita.nome}} - <span class="text-info">Dificuldade: {{Receita.dificuldade}}</span></h1>
+        <h3>Porções: {{Receita.num_porcoes}}</h3>
+        <div class="ingredients-block">
+          <div ng-repeat="item in Receita.ingredientes" class="ingredient-item">{{item}}</div>
+        </div>
       </div>
     </div>
   </div>

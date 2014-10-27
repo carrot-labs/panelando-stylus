@@ -7,23 +7,31 @@ angular.module('panelando')
 
 }])
 
-.controller('ReceitasController', ['$scope', function($scope) {
+.controller('ReceitasController', [
+'$scope', 
+'$http', 
+'$receitas', 
+function($scope, $http, $receitas) {
+
 
 }])
 
-.controller('ReceitaController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-	$scope.id = $routeParams.id;
+.controller('ReceitaController', [
+'$scope',
+'$routeParams',
+'$receitas',
+function($scope, $routeParams, $receitas) {
 
-	$http({
-	  url: "http://guilhermecoelho.hol.es/test.php", 
-	  method: "POST",
-	  data: {id: $scope.id}
- 	}).success(function(data, status) {
- 		console.log(data);
- 		console.log(status);
- 	});
+	var id = $routeParams.id;
+
+	var string = "[\"leite\", \"acucar\"]";
+
+	$receitas.get(id, function(data) {
+		$scope.Receita = data;
+		$scope.Receita.ingredientes = jQuery.parseJSON(data.ingredientes);
+	});
+
 }])
-
 
 /**
  * Ingredients Controller

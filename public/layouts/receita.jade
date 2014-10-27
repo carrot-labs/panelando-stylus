@@ -48,6 +48,13 @@ div.page-nova-receita
                   i.icon.icon-doc-1
 
 
-      div.col-md-8
-        h1 Receita {{test}}
+      div.col-md-8(ng-if="Receita")
 
+        h1 {{Receita.nome}} - 
+          span.text-info Dificuldade: {{Receita.dificuldade}}
+
+        h3 Porções: {{Receita.num_porcoes}}
+
+        div.ingredients-block
+          div.ingredient-item(ng-repeat="item in Receita.ingredientes")
+            |{{item}}
