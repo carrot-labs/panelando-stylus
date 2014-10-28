@@ -29,20 +29,20 @@ div.page-nova-receita
         //-- Main menu
         nav.main-menu(role="navigation")
           ul.nav.nav-pills.nav-stacked
-            li.active
-              a(href="/#/")
+            li
+              a(href="#/")
                 |Home
                 div.link-icon
                   i.icon.icon-shop
 
             li
-              a(href="/#/receitas/2")
+              a(href="#/receitas/2")
                 |Receitas
                 div.link-icon
                   i.icon.icon-food-1
 
-            li
-              a(href="/#/receitas/nova")
+            li.active
+              a(href="#/nova")
                 |Nova Receita
                 div.link-icon
                   i.icon.icon-doc-1
@@ -50,6 +50,7 @@ div.page-nova-receita
 
       div.col-md-8
         div.ingredients-block(ng-controller="IngredientsCtrl as Ingredients")
+          
           div(ng-repeat="ingredient in Ingredients.ingredientsList")
             span.ingredient-number 
               |{{ $index + 1 }}

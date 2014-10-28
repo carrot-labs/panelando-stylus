@@ -7,6 +7,15 @@ angular.module('panelando')
 
 }])
 
+.controller('NovaReceitaController', [
+'$scope', 
+'$http', 
+'$receitas', 
+function($scope, $http, $receitas) {
+
+
+}])
+
 .controller('ReceitasController', [
 '$scope', 
 '$http', 

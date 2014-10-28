@@ -21,21 +21,43 @@
       <div class="col-md-4">
         <nav role="navigation" class="main-menu">
           <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/#/">Home
+            <li><a href="#/">Home
                 <div class="link-icon"><i class="icon icon-shop"></i></div></a></li>
-            <li><a href="/#/receitas/2">Receitas
+            <li class="active"><a href="#/receitas/2">Receitas
                 <div class="link-icon"><i class="icon icon-food-1"></i></div></a></li>
-            <li><a href="/#/receitas/nova">Nova Receita
+            <li><a href="#/nova">Nova Receita
                 <div class="link-icon"><i class="icon icon-doc-1"></i></div></a></li>
           </ul>
         </nav>
       </div>
       <div ng-if="Receita" class="col-md-8">
-        <h1>{{Receita.nome}} - <span class="text-info">Dificuldade: {{Receita.dificuldade}}</span></h1>
-        <h3>Porções: {{Receita.num_porcoes}}</h3>
-        <div class="ingredients-block">
-          <div ng-repeat="item in Receita.ingredientes" class="ingredient-item">{{item}}</div>
-        </div>
+        <article class="primary-content">
+          <h1 class="recipe-title">{{Receita.nome}}</h1>
+          <div class="recipe-image"><img src="assets/images/static/steak-with-potatoes.jpg" class="img-responsive"/></div>
+          <div class="recipe-info row">
+            <ul>
+              <li class="col-md-4">
+                <h5><i class="icon icon-clock-1"> </i>
+                  <div class="recipe-info-caption">15 min</div>
+                </h5>
+              </li>
+              <li class="col-md-4">
+                <h5><i class="icon icon-user-1"> </i>
+                  <div class="recipe-info-caption">Para três</div>
+                </h5>
+              </li>
+              <li class="col-md-4">
+                <h5><i class="icon icon-beaker-1"> </i>
+                  <div class="recipe-info-caption">Fácil</div>
+                </h5>
+              </li>
+            </ul>
+          </div>
+          <h3>Ingredientes</h3>
+          <div class="ingredients-block">
+            <div ng-repeat="item in Receita.ingredientes" class="ingredient-item">{{item}}</div>
+          </div>
+        </article>
       </div>
     </div>
   </div>

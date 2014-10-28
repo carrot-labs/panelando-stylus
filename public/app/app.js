@@ -21,5 +21,10 @@ angular.module('panelando', ['ngRoute'])
 			controller: 'ReceitaController'
 		})
 
+		.when('/nova', {
+			templateUrl: 'views/nova-receita.html',
+			controller: 'NovaReceitaController'
+		})
+
 		.otherwise({redirectTo: '/'});
 }])
