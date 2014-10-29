@@ -35,13 +35,15 @@
           <h2 class="l-receita-section-title">New Ingredientes</h2>
           <div class="notepad-block">
             <div class="notepad-block-heading"></div>
-            <div><span class="notepad-number"> </span>
+            <div data-ng-repeat="ingredient in ingredients" class="notepad-item-holder"><span class="notepad-number">
+                 
+                {{ $index + 1 }}</span>
               <div class="notepad-item">
                  
-                {{newIngredient.name}}
+                {{ ingredient.name }}
               </div>
             </div>
-            <input data-ng-model="newIngredient.name" class="notepad-item"/>
+            <input data-ng-model="newIngredient.name" data-ng-keydown="addIngredient($event)" class="notepad-item"/>
           </div>
           <h2 class="l-receita-section-title">Ingredientes</h2>
           <div ng-controller="IngredientsCtrl as Ingredients" class="notepad-block">

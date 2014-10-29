@@ -1,60 +1,73 @@
 /**
  * Get the angular module
  */
-angular.module('panelando')
+ angular.module('panelando')
 
-.controller('HomeController', ['$scope', function($scope) {
+ .controller('HomeController', ['$scope', function($scope) {
 
-}])
+ }])
 
-.controller('NovaReceitaController', [
-'$scope', 
-'$http',
-'$log', 
-'$receitas', 
-function($scope, $http, $log, $receitas) {
-	
-	$scope.addIngredient = function() {};
-	$scope.editIngredient = function() {};
-	$scope.saveIngredient = function() {};
+ .controller('NovaReceitaController', [
+ 	'$scope', 
+ 	'$http',
+ 	'$log', 
+ 	'$receitas', 
+ 	function($scope, $http, $log, $receitas) {
 
-	$scope.addStep = function() {};
-	$scope.editStep = function() {};
-	$scope.saveStep = function() {};
+ 		$scope.steps       = [];
+ 		$scope.ingredients = [];
 
-}])
+ 		$scope.newIngredient = { name: '', editing: false }
 
-.controller('ReceitasController', [
-'$scope', 
-'$http', 
-'$receitas', 
-function($scope, $http, $receitas) {
+ 		$scope.addIngredient = function(event) {
+		 	if($scope.newIngredient.name === '' || event.keyCode !== 13) return;
+
+ 				$scope.ingredients.push($scope.newIngredient);
+	 			$scope.newIngredient = {name: '', editing: false};
+
+ 				$log.info($scope.ingredients);
+ 		};
+
+ 		$scope.editIngredient = function() {};
+ 		$scope.saveIngredient = function() {};
+
+ 		$scope.addStep = function() {};
+ 		$scope.editStep = function() {};
+ 		$scope.saveStep = function() {};
+
+ 	}])
+
+ .controller('ReceitasController', [
+ 	'$scope', 
+ 	'$http', 
+ 	'$receitas', 
+ 	function($scope, $http, $receitas) {
 
 
-}])
+ 	}])
 
-.controller('ReceitaController', [
-'$scope',
-'$routeParams',
-'$receitas',
-function($scope, $routeParams, $receitas) {
+ .controller('ReceitaController', [
+ 	'$scope',
+ 	'$routeParams',
+ 	'$receitas',
+ 	function($scope, $routeParams, $receitas) {
 
-	var id = $routeParams.id;
+ 		var id = $routeParams.id;
 
-	var string = "[\"leite\", \"acucar\"]";
+ 		var string = "[\"leite\", \"acucar\"]";
 
-	$receitas.get(id, function(data) {
-		$scope.Receita = data;
-		$scope.Receita.ingredientes = jQuery.parseJSON(data.ingredientes);
-	});
+ 		$receitas.get(id, function(data) {
+ 			$scope.Receita = data;
+ 			$scope.Receita.ingredientes = jQuery.parseJSON(data.ingredientes);
+ 		});
 
-}])
+ 	}])
 
-.controller('IngredientsCtrl', [
-'$scope', 
-'$log', 
-'$ingredientes',
-function($scope, $log, $ingredientes) {
+ .controller('IngredientsCtrl', [
+ 	'$scope', 
+ 	'$log', 
+ 	'$ingredientes',
+ 	function($scope, $log, $ingredientes) {
 
 	/**
 	 * The controller reference
@@ -75,15 +88,15 @@ function($scope, $log, $ingredientes) {
 	 * @param  object  event The object that carries the code from the keyboard
 	 * @return void
 	 */
-	this.addIngredient = function(event) {
-		/** Prevent an ingredient to be created empty */
-		if(this.newIngredient.name==='') return;
+	 this.addIngredient = function(event) {
+	 	/** Prevent an ingredient to be created empty */
+	 	if(this.newIngredient.name==='') return;
 
-		if(event.keyCode === 13) {
-			this.ingredientsList.push(this.newIngredient);
-			this.newIngredient = {name: '', editing: false};
-		}
-	};
+	 	if(event.keyCode === 13) {
+	 		this.ingredientsList.push(this.newIngredient);
+	 		this.newIngredient = {name: '', editing: false};
+	 	}
+	 };
 
 
 	/**
@@ -94,9 +107,9 @@ function($scope, $log, $ingredientes) {
 	 * @param  int 	index The index of the ingredient to be edited
 	 * @return void
 	 */
-	this.editIngredient = function(index) {
-		this.ingredientsList[index].editing = true;
-	};
+	 this.editIngredient = function(index) {
+	 	this.ingredientsList[index].editing = true;
+	 };
 
 
 	/**
@@ -109,16 +122,16 @@ function($scope, $log, $ingredientes) {
 	 * @param  boolean inputByKeyboard The way the method is called
 	 * @return void
 	 */
-	this.saveIngredient = function(event, index, inputByKeyboard) {
-		if(inputByKeyboard) {
-			if(event.keyCode === 13) {
-				this.ingredientsList[index].editing = false;
-			}
+	 this.saveIngredient = function(event, index, inputByKeyboard) {
+	 	if(inputByKeyboard) {
+	 		if(event.keyCode === 13) {
+	 			this.ingredientsList[index].editing = false;
+	 		}
 
-			return;
-		}
+	 		return;
+	 	}
 
-		this.ingredientsList[index].editing = false;
-	};
+	 	this.ingredientsList[index].editing = false;
+	 };
 
-}])
+	}])

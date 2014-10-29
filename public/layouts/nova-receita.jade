@@ -57,14 +57,18 @@ div.page-receita
           div.notepad-block
             div.notepad-block-heading
           
-            div
+            div.notepad-item-holder(
+              data-ng-repeat="ingredient in ingredients"
+            )
               span.notepad-number 
+                |{{ $index + 1 }}
                 
-              div.notepad-item() 
-                |{{newIngredient.name}}
+              div.notepad-item 
+                |{{ ingredient.name }}
 
             input.notepad-item(
               data-ng-model="newIngredient.name"
+              data-ng-keydown="addIngredient($event)"
             )
 
           h2.l-receita-section-title Ingredientes
