@@ -9,10 +9,18 @@ angular.module('panelando')
 
 .controller('NovaReceitaController', [
 '$scope', 
-'$http', 
+'$http',
+'$log', 
 '$receitas', 
-function($scope, $http, $receitas) {
+function($scope, $http, $log, $receitas) {
+	
+	$scope.addIngredient = function() {};
+	$scope.editIngredient = function() {};
+	$scope.saveIngredient = function() {};
 
+	$scope.addStep = function() {};
+	$scope.editStep = function() {};
+	$scope.saveStep = function() {};
 
 }])
 
@@ -42,23 +50,22 @@ function($scope, $routeParams, $receitas) {
 
 }])
 
-/**
- * Ingredients Controller
- */
-.controller('IngredientsCtrl', ['$scope', function($scope) {
+.controller('IngredientsCtrl', [
+'$scope', 
+'$log', 
+'$ingredientes',
+function($scope, $log, $ingredientes) {
 
 	/**
 	 * The controller reference
 	 */
-	Ingredients = this;
-
 
 	/**
 	 * Init the main variables
 	 */
-	this.ingredientsList = [];
+	// this.ingredientsList = [{name: 'Leite', editing: false}, {name: 'Açucar', editing: false}];
+	this.ingredientsList = $ingredientes.get();
 	this.newIngredient = {name: '', editing: false};
-
 	
 	/**
 	 * Add Ingredient

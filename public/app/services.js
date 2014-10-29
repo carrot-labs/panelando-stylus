@@ -27,3 +27,18 @@ angular.module('panelando')
 
 	return o;
 })
+
+.factory('$ingredientes', function() {
+	var o = {};
+
+	o.ingredients = [{name: 'Leite', editing: false}, {name: 'Açucar', editing: false}];
+
+	o.get = function() {
+		return this.ingredients;
+	};
+
+	o.save = function(item) {
+		this.ingredients.push(item);
+	};
+	return o;
+}) 

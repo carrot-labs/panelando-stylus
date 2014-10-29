@@ -1,0 +1,52 @@
+.notepad-block
+  +clearfix()
+  position: relative
+  border: 1px solid #e9eaea
+  border-bottom: none
+  box-shadow: 2px 2px 0px 0px rgba(#e9eaea,0.75)
+
+  .notepad-block-heading
+    width: 100%
+    height: 48px
+    background: url(../images/general/notepad-header.png) 
+
+  .notepad-item-holder
+    +clearfix()
+
+    &:last-child 
+      .notepad-item,
+      input.notepad-item
+        background: url(../images/general/notepad-item-dark.png)
+
+  .notepad-item
+    width: 100%
+    padding-top: 0
+    padding-bottom: 0
+    padding-left: 60px
+    background: url(../images/general/notepad-item.png)
+    border: none
+    box-shadow: none
+    font-family: $font-family-serif
+    font-size: 20px
+    color: $gray-dark
+    line-height: 30px
+    +placeholder
+      font-style: italic
+
+    &,
+    &:focus
+      outline: 0
+
+    &.editing
+      font-style: italic
+      color: $gray-light
+
+  .notepad-number
+    width: 40px
+    position: absolute
+    font-family: $font-family-serif
+    font-size: 18px
+    font-style: italic
+    color: lighten($gray-light, 7%)
+    text-align: center
+    line-height: 30px

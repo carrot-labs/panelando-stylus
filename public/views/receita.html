@@ -1,5 +1,5 @@
 
-<div class="page-nova-receita">
+<div class="page-receita">
   <nav role="navigation" class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -16,8 +16,8 @@
       </div>
     </div>
   </nav>
-  <div class="row">
-    <div class="container">
+  <div class="container">
+    <div class="row">
       <div class="col-md-4">
         <nav role="navigation" class="main-menu">
           <ul class="nav nav-pills nav-stacked">
@@ -31,31 +31,42 @@
         </nav>
       </div>
       <div ng-if="Receita" class="col-md-8">
-        <article class="primary-content">
-          <h1 class="recipe-title">{{Receita.nome}}</h1>
-          <div class="recipe-image"><img src="assets/images/static/steak-with-potatoes.jpg" class="img-responsive"/></div>
-          <div class="recipe-info row">
+        <article class="l-receita-content">
+          <h1 class="l-receita-title">{{Receita.nome}}</h1>
+          <div class="l-receita-image"><img src="assets/images/static/steak-with-potatoes.jpg" class="img-responsive"/></div>
+          <div class="l-receita-info row">
             <ul>
               <li class="col-md-4">
                 <h5><i class="icon icon-clock-1"> </i>
-                  <div class="recipe-info-caption">15 min</div>
+                  <div class="l-receita-info-caption">15 min</div>
                 </h5>
               </li>
               <li class="col-md-4">
                 <h5><i class="icon icon-user-1"> </i>
-                  <div class="recipe-info-caption">Para três</div>
+                  <div class="l-receita-info-caption">Para três</div>
                 </h5>
               </li>
               <li class="col-md-4">
                 <h5><i class="icon icon-beaker-1"> </i>
-                  <div class="recipe-info-caption">Fácil</div>
+                  <div class="l-receita-info-caption">Fácil</div>
                 </h5>
               </li>
             </ul>
           </div>
-          <h3>Ingredientes</h3>
-          <div class="ingredients-block">
-            <div ng-repeat="item in Receita.ingredientes" class="ingredient-item">{{item}}</div>
+          <h2 class="l-receita-section-title">Ingredientes</h2>
+          <div class="notepad-block">
+            <div class="notepad-block-heading"></div>
+            <div ng-repeat="item in Receita.ingredientes" class="notepad-item-holder"><span class="notepad-number">{{ $index + 1 }}</span>
+              <div class="notepad-item">{{ item }}</div>
+            </div>
+          </div>
+          <h2 class="l-receita-section-title">Modo de Preparo</h2>
+          <div class="notepad-block">
+            <div class="notepad-block-heading"></div>
+            <div ng-repeat="item in Receita.ingredientes"><span class="notepad-number">{{$index+1}}</span>
+              <div class="notepad-item">Bata no liquidificador todos os ingredientes por mais ou menos dez minutos e meio</div>
+              <div class="notepad-item">&nbsp;</div>
+            </div>
           </div>
         </article>
       </div>

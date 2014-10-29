@@ -1,4 +1,4 @@
-div.page-nova-receita
+div.page-receita
   nav.navbar.navbar-default(role="navigation")
     div.container
       //- Brand and toggle get grouped for better mobile display
@@ -49,31 +49,86 @@ div.page-nova-receita
 
 
       div.col-md-8
-        div.ingredients-block(ng-controller="IngredientsCtrl as Ingredients")
+
+        article.l-receita-content
+
+          h2.l-receita-section-title New Ingredientes
+
+          div.notepad-block
+            div.notepad-block-heading
           
-          div(ng-repeat="ingredient in Ingredients.ingredientsList")
-            span.ingredient-number 
-              |{{ $index + 1 }}
-            div.ingredient-item(
-              ng-if="!ingredient.editing"
-              ng-click="Ingredients.editIngredient($index)"
-            ) 
-              |{{ ingredient.name }}
+            div
+              span.notepad-number 
+                
+              div.notepad-item() 
+                |{{newIngredient.name}}
 
-            input.ingredient-item.editing(
-              type="text",
-              ng-if="ingredient.editing"
-              ng-value="ingredient.name"
-              ng-model="Ingredients.ingredientsList[$index].name"
-              ng-keydown="Ingredients.saveIngredient($event, $index, true)"
-              ng-blur="Ingredients.saveIngredient($event, $index)"
-              focus="ingredient.editing"
-            )  
+            input.notepad-item(
+              data-ng-model="newIngredient.name"
+            )
 
-          input.ingredient-item(
-            type="text", 
-            placeholder="Digite o ingrediente e tecle enter",
-            ng-model="Ingredients.newIngredient.name", 
-            ng-keydown="Ingredients.addIngredient($event)"
-          )
+          h2.l-receita-section-title Ingredientes
+
+          div.notepad-block(ng-controller="IngredientsCtrl as Ingredients")
+            div.notepad-block-heading
+          
+            div(ng-repeat="ingredient in Ingredients.ingredientsList")
+              span.notepad-number 
+                |{{ $index + 1 }}
+              div.notepad-item(
+                ng-if="!ingredient.editing"
+                ng-click="Ingredients.editIngredient($index)"
+              ) 
+                |{{ ingredient.name }}
+
+              input.notepad-item.editing(
+                type="text",
+                ng-if="ingredient.editing"
+                ng-value="ingredient.name"
+                ng-model="Ingredients.ingredientsList[$index].name"
+                ng-keydown="Ingredients.saveIngredient($event, $index, true)"
+                ng-blur="Ingredients.saveIngredient($event, $index)"
+                focus="ingredient.editing"
+              )  
+
+            input.notepad-item(
+              type="text", 
+              placeholder="Digite o ingrediente e tecle enter",
+              ng-model="Ingredients.newIngredient.name", 
+              ng-keydown="Ingredients.addIngredient($event)"
+            )
+
+          h2.l-receita-section-title Modo de Preparo
+
+          div.notepad-block(ng-controller="IngredientsCtrl as Ingredients")
+            div.notepad-block-heading
+          
+            div(ng-repeat="ingredient in Ingredients.ingredientsList")
+              span.notepad-number 
+                |{{ $index + 1 }}
+              div.notepad-item(
+                ng-if="!ingredient.editing"
+                ng-click="Ingredients.editIngredient($index)"
+              ) 
+                |{{ ingredient.name }}
+
+              input.notepad-item.editing(
+                type="text",
+                ng-if="ingredient.editing"
+                ng-value="ingredient.name"
+                ng-model="Ingredients.ingredientsList[$index].name"
+                ng-keydown="Ingredients.saveIngredient($event, $index, true)"
+                ng-blur="Ingredients.saveIngredient($event, $index)"
+                focus="ingredient.editing"
+              )  
+
+              div.notepad-item
+                |&nbsp;
+
+            input.notepad-item(
+              type="text", 
+              placeholder="Digite o ingrediente e tecle enter",
+              ng-model="Ingredients.newIngredient.name", 
+              ng-keydown="Ingredients.addIngredient($event)"
+            )
 
