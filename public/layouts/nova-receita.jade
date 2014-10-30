@@ -1,4 +1,4 @@
-div.page-nova-receita
+div.page-receita
   nav.navbar.navbar-default(role="navigation")
     div.container
       //- Brand and toggle get grouped for better mobile display
@@ -23,56 +23,133 @@ div.page-nova-receita
             a(href="#") Cadastrar
    
 
-  div.row
-    div.container
+  div.container
+    div.row
       div.col-md-4
         //-- Main menu
         nav.main-menu(role="navigation")
           ul.nav.nav-pills.nav-stacked
-            li.active
-              a(href="/#/")
+            li
+              a(href="#/")
                 |Home
                 div.link-icon
                   i.icon.icon-shop
 
             li
-              a(href="/#/receitas/2")
+              a(href="#/receitas/2")
                 |Receitas
                 div.link-icon
                   i.icon.icon-food-1
 
-            li
-              a(href="/#/receitas/nova")
+            li.active
+              a(href="#/nova")
                 |Nova Receita
                 div.link-icon
                   i.icon.icon-doc-1
 
 
       div.col-md-8
-        div.ingredients-block(ng-controller="IngredientsCtrl as Ingredients")
-          div(ng-repeat="ingredient in Ingredients.ingredientsList")
-            span.ingredient-number 
-              |{{ $index + 1 }}
-            div.ingredient-item(
-              ng-if="!ingredient.editing"
-              ng-click="Ingredients.editIngredient($index)"
-            ) 
-              |{{ ingredient.name }}
 
-            input.ingredient-item.editing(
-              type="text",
-              ng-if="ingredient.editing"
-              ng-value="ingredient.name"
-              ng-model="Ingredients.ingredientsList[$index].name"
-              ng-keydown="Ingredients.saveIngredient($event, $index, true)"
-              ng-blur="Ingredients.saveIngredient($event, $index)"
-              focus="ingredient.editing"
-            )  
+        article.l-receita-content
 
-          input.ingredient-item(
-            type="text", 
-            placeholder="Digite o ingrediente e tecle enter",
-            ng-model="Ingredients.newIngredient.name", 
-            ng-keydown="Ingredients.addIngredient($event)"
-          )
+          h3 Nome da Receita
+
+          div.notepad-block
+          
+            div.notepad-item-holder
+              input.notepad-item
+
+          div.l-receita-image(style="margin-top: 30px")
+            form(action="assets/javascripts/server.php" class="dropzone")
+            img.img-responsive(src="assets/images/static/steak-with-potatoes.jpg")
+
+          div.l-receita-info.row
+            ul
+              li.col-md-4
+                h5
+                  i.icon.icon-clock-1 
+                  div.l-receita-info-caption
+                    div.l-receita-info-input
+                      input.form-control
+                    | &nbsp;min
+              li.col-md-4
+                h5
+                  i.icon.icon-user-1 
+                  div.l-receita-info-caption
+                    div.l-receita-info-input
+                      input.form-control
+                    | &nbsp;porções
+              li.col-md-4
+                h5
+                  i.icon.icon-beaker-1 
+                  div.l-receita-info-caption
+                    div.l-receita-info-input
+                      select.form-control
+                        option Fácil
+                        option Médio
+                        option Difícil
+
+          h3.l-receita-section-titl Ingredientes
+
+          div.notepad-block
+            div.notepad-block-heading
+          
+            div.notepad-item-holder(
+              data-ng-repeat="ingredient in ingredients"
+            )
+              span.notepad-number 
+                |{{ $index + 1 }}
+                
+              div.notepad-item(
+                data-ng-if="!ingredient.editing"
+                data-ng-click="editIngredient($index)"
+              )
+                |{{ ingredient.description }}
+
+              input.notepad-item.editing(
+                type="text",
+                data-ng-if="ingredient.editing"
+                data-ng-value="ingredient.description"
+                data-ng-model="ingredients[$index].description"
+                data-ng-keydown="saveIngredient($event, $index, true)"
+                focus="ingredient.editing"
+              )  
+
+            input.notepad-item(
+              placeholder="Digite o ingrediente e aperte enter"
+              data-ng-model="newIngredient.description"
+              data-ng-keydown="addIngredient($event)"
+            )
+
+          h3.l-receita-section-titl Modo de Preparo
+
+          div.notepad-block
+            div.notepad-block-heading
+          
+            div.notepad-item-holder(
+              data-ng-repeat="step in steps"
+            )
+              span.notepad-number 
+                |{{ $index + 1 }}
+                
+              div.notepad-item(
+                data-ng-if="!step.editing"
+                data-ng-click="editStep($index)"
+              )
+                |{{ step.description }}
+
+              input.notepad-item.editing(
+                type="text",
+                data-ng-if="step.editing"
+                data-ng-value="step.description"
+                data-ng-model="steps[$index].description"
+                data-ng-keydown="saveStep($event, $index, true)"
+                focus="step.editing"
+              )  
+
+            input.notepad-item(
+              placeholder="Digite a instrução e aperte enter"
+              data-ng-model="newStep.description"
+              data-ng-keydown="addStep($event)"
+            )
 

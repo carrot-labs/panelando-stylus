@@ -1,47 +1,114 @@
 /**
  * Get the angular module
  */
-angular.module('panelando')
+ angular.module('panelando')
 
-.controller('HomeController', ['$scope', function($scope) {
+ .controller('HomeController', ['$scope', function($scope) {
 
-}])
+ }])
 
-.controller('ReceitasController', ['$scope', function($scope) {
+ .controller('NovaReceitaController', [
+ 	'$scope', 
+ 	'$http',
+ 	'$log', 
+ 	'$receitas', 
+ 	function($scope, $http, $log, $receitas) {
 
-}])
+ 		$scope.steps       = [];
+ 		$scope.ingredients = [];
 
-.controller('ReceitaController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-	$scope.id = $routeParams.id;
+ 		$scope.newStep       = { description: '', editing: false }
+ 		$scope.newIngredient = { description: '', editing: false }
 
-	$http({
-	  url: "http://guilhermecoelho.hol.es/test.php", 
-	  method: "POST",
-	  data: {id: $scope.id}
- 	}).success(function(data, status) {
- 		console.log(data);
- 		console.log(status);
- 	});
-}])
+ 		$scope.addIngredient = function(event) {
+ 			if($scope.newIngredient.description === '' || event.keyCode !== 13) return;
+
+ 			$scope.ingredients.push($scope.newIngredient);
+ 			$scope.newIngredient = { description: '', editing: false };
+ 		};
+
+ 		$scope.editIngredient = function(index) {
+ 			$scope.ingredients[index].editing = true;
+ 		};
+
+ 		$scope.saveIngredient = function(event, index, inputByKeyboard) {
+ 			if(inputByKeyboard) {
+ 				if(event.keyCode === 13) {
+ 					$scope.ingredients[index].editing = false;
+ 				}
+ 				return;
+ 			}
+
+ 			$scope.ingredients[index].editing = false;
+ 		};
+
+ 		$scope.addStep = function(event) {
+ 			if($scope.newStep.description === '' || event.keyCode !== 13) return;
+
+ 			$scope.steps.push($scope.newStep);
+ 			$scope.newStep = { description: '', editing: false };
+ 		};
+
+ 		$scope.editStep = function(index) {
+ 			$scope.steps[index].editing = true;
+ 		};
+
+ 		$scope.saveStep = function(event, index, inputByKeyboard) {
+ 			if(inputByKeyboard) {
+ 				if(event.keyCode === 13) {
+ 					$scope.steps[index].editing = false;
+ 				}
+ 				return;
+ 			}
+
+ 			$scope.steps[index].editing = false;
+ 		};
 
 
-/**
- * Ingredients Controller
- */
-.controller('IngredientsCtrl', ['$scope', function($scope) {
+ 	}])
+
+.controller('ReceitasController', [
+	'$scope', 
+	'$http', 
+	'$receitas', 
+	function($scope, $http, $receitas) {
+
+
+	}])
+
+.controller('ReceitaController', [
+	'$scope',
+	'$routeParams',
+	'$receitas',
+	function($scope, $routeParams, $receitas) {
+
+		var id = $routeParams.id;
+
+		var string = "[\"leite\", \"acucar\"]";
+
+		$receitas.get(id, function(data) {
+			$scope.Receita = data;
+			$scope.Receita.ingredientes = jQuery.parseJSON(data.ingredientes);
+		});
+
+	}])
+
+.controller('IngredientsCtrl', [
+	'$scope', 
+	'$log', 
+	'$ingredientes',
+	function($scope, $log, $ingredientes) {
 
 	/**
 	 * The controller reference
 	 */
-	Ingredients = this;
-
 
 	/**
 	 * Init the main variables
 	 */
-	this.ingredientsList = [];
+	// this.ingredientsList = [{name: 'Leite', editing: false}, {name: 'Açucar', editing: false}];
+	this.ingredientsList = $ingredientes.get();
 	this.newIngredient = {name: '', editing: false};
-
 	
 	/**
 	 * Add Ingredient
@@ -51,15 +118,15 @@ angular.module('panelando')
 	 * @param  object  event The object that carries the code from the keyboard
 	 * @return void
 	 */
-	this.addIngredient = function(event) {
-		/** Prevent an ingredient to be created empty */
-		if(this.newIngredient.name==='') return;
+	 this.addIngredient = function(event) {
+	 	/** Prevent an ingredient to be created empty */
+	 	if(this.newIngredient.name==='') return;
 
-		if(event.keyCode === 13) {
-			this.ingredientsList.push(this.newIngredient);
-			this.newIngredient = {name: '', editing: false};
-		}
-	};
+	 	if(event.keyCode === 13) {
+	 		this.ingredientsList.push(this.newIngredient);
+	 		this.newIngredient = {name: '', editing: false};
+	 	}
+	 };
 
 
 	/**
@@ -70,9 +137,9 @@ angular.module('panelando')
 	 * @param  int 	index The index of the ingredient to be edited
 	 * @return void
 	 */
-	this.editIngredient = function(index) {
-		this.ingredientsList[index].editing = true;
-	};
+	 this.editIngredient = function(index) {
+	 	this.ingredientsList[index].editing = true;
+	 };
 
 
 	/**
@@ -85,16 +152,16 @@ angular.module('panelando')
 	 * @param  boolean inputByKeyboard The way the method is called
 	 * @return void
 	 */
-	this.saveIngredient = function(event, index, inputByKeyboard) {
-		if(inputByKeyboard) {
-			if(event.keyCode === 13) {
-				this.ingredientsList[index].editing = false;
-			}
+	 this.saveIngredient = function(event, index, inputByKeyboard) {
+	 	if(inputByKeyboard) {
+	 		if(event.keyCode === 13) {
+	 			this.ingredientsList[index].editing = false;
+	 		}
 
-			return;
-		}
+	 		return;
+	 	}
 
-		this.ingredientsList[index].editing = false;
-	};
+	 	this.ingredientsList[index].editing = false;
+	 };
 
-}])
+	}])

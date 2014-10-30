@@ -1,4 +1,4 @@
-div.page-nova-receita
+div.page-receita
   nav.navbar.navbar-default(role="navigation")
     div.container
       //- Brand and toggle get grouped for better mobile display
@@ -23,31 +23,82 @@ div.page-nova-receita
             a(href="#") Cadastrar
    
 
-  div.row
-    div.container
+  div.container
+    div.row
       div.col-md-4
         //-- Main menu
         nav.main-menu(role="navigation")
           ul.nav.nav-pills.nav-stacked
-            li.active
-              a(href="/#/")
+            li
+              a(href="#/")
                 |Home
                 div.link-icon
                   i.icon.icon-shop
 
-            li
-              a(href="/#/receitas/2")
+            li.active
+              a(href="#/receitas/2")
                 |Receitas
                 div.link-icon
                   i.icon.icon-food-1
 
             li
-              a(href="/#/receitas/nova")
+              a(href="#/nova")
                 |Nova Receita
                 div.link-icon
                   i.icon.icon-doc-1
 
 
-      div.col-md-8
-        h1 Receita {{test}}
+      div.col-md-8(ng-if="Receita")
+
+        article.l-receita-content
+
+          h1.l-receita-title {{Receita.nome}}
+
+          div.l-receita-image
+            img.img-responsive(src="assets/images/static/steak-with-potatoes.jpg")
+
+          div.l-receita-info.row
+            ul
+              li.col-md-4
+                h5
+                  i.icon.icon-clock-1 
+                  div.l-receita-info-caption 15 min
+              li.col-md-4
+                h5
+                  i.icon.icon-user-1 
+                  div.l-receita-info-caption Para três
+              li.col-md-4
+                h5
+                  i.icon.icon-beaker-1 
+                  div.l-receita-info-caption Fácil
+
+          h2.l-receita-section-title Ingredientes
+
+          div.notepad-block
+            div.notepad-block-heading
+
+            div.notepad-item-holder(ng-repeat="item in Receita.ingredientes")
+              span.notepad-number
+                |{{ $index + 1 }}
+              div.notepad-item
+                |{{ item }}
+
+          h2.l-receita-section-title Modo de Preparo
+
+          div.notepad-block
+            div.notepad-block-heading
+
+            div(ng-repeat="item in Receita.ingredientes")
+              span.notepad-number
+                |{{$index+1}}
+              div.notepad-item
+                |Bata no liquidificador todos os ingredientes por mais ou menos dez minutos e meio
+              div.notepad-item
+                &nbsp;
+            
+
+        //- h1 {{Receita.nome}} - 
+        //-   span.text-info Dificuldade: {{Receita.dificuldade}}
+
+        //- h3 Porções: {{Receita.num_porcoes}}
 

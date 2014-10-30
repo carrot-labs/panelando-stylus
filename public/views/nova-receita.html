@@ -1,5 +1,5 @@
 
-<div class="page-nova-receita">
+<div class="page-receita">
   <nav role="navigation" class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -16,33 +16,89 @@
       </div>
     </div>
   </nav>
-  <div class="row">
-    <div class="container">
+  <div class="container">
+    <div class="row">
       <div class="col-md-4">
         <nav role="navigation" class="main-menu">
           <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/#/">Home
+            <li><a href="#/">Home
                 <div class="link-icon"><i class="icon icon-shop"></i></div></a></li>
-            <li><a href="/#/receitas/2">Receitas
+            <li><a href="#/receitas/2">Receitas
                 <div class="link-icon"><i class="icon icon-food-1"></i></div></a></li>
-            <li><a href="/#/receitas/nova">Nova Receita
+            <li class="active"><a href="#/nova">Nova Receita
                 <div class="link-icon"><i class="icon icon-doc-1"></i></div></a></li>
           </ul>
         </nav>
       </div>
       <div class="col-md-8">
-        <div ng-controller="IngredientsCtrl as Ingredients" class="ingredients-block">
-          <div ng-repeat="ingredient in Ingredients.ingredientsList"><span class="ingredient-number">
-               
-              {{ $index + 1 }}</span>
-            <div ng-if="!ingredient.editing" ng-click="Ingredients.editIngredient($index)" class="ingredient-item">
-               
-              {{ ingredient.name }}
+        <article class="l-receita-content">
+          <h3>Nome da Receita</h3>
+          <div class="notepad-block">
+            <div class="notepad-item-holder">
+              <input class="notepad-item"/>
             </div>
-            <input type="text" ng-if="ingredient.editing" ng-value="ingredient.name" ng-model="Ingredients.ingredientsList[$index].name" ng-keydown="Ingredients.saveIngredient($event, $index, true)" ng-blur="Ingredients.saveIngredient($event, $index)" focus="ingredient.editing" class="ingredient-item editing"/>
           </div>
-          <input type="text" placeholder="Digite o ingrediente e tecle enter" ng-model="Ingredients.newIngredient.name" ng-keydown="Ingredients.addIngredient($event)" class="ingredient-item"/>
-        </div>
+          <div style="margin-top: 30px" class="l-receita-image">
+            <form action="assets/javascripts/server.php" class="dropzone"></form><img src="assets/images/static/steak-with-potatoes.jpg" class="img-responsive"/>
+          </div>
+          <div class="l-receita-info row">
+            <ul>
+              <li class="col-md-4">
+                <h5><i class="icon icon-clock-1"> </i>
+                  <div class="l-receita-info-caption">
+                    <div class="l-receita-info-input">
+                      <input class="form-control"/>
+                    </div>&nbsp;min
+                  </div>
+                </h5>
+              </li>
+              <li class="col-md-4">
+                <h5><i class="icon icon-user-1"> </i>
+                  <div class="l-receita-info-caption">
+                    <div class="l-receita-info-input">
+                      <input class="form-control"/>
+                    </div>&nbsp;porções
+                  </div>
+                </h5>
+              </li>
+              <li class="col-md-4">
+                <h5><i class="icon icon-beaker-1"> </i>
+                  <div class="l-receita-info-caption">
+                    <div class="l-receita-info-input">
+                      <select class="form-control">
+                        <option>Fácil</option>
+                        <option>Médio</option>
+                        <option>Difícil</option>
+                      </select>
+                    </div>
+                  </div>
+                </h5>
+              </li>
+            </ul>
+          </div>
+          <h3 class="l-receita-section-titl">Ingredientes</h3>
+          <div class="notepad-block">
+            <div class="notepad-block-heading"></div>
+            <div data-ng-repeat="ingredient in ingredients" class="notepad-item-holder"><span class="notepad-number">
+                 
+                {{ $index + 1 }}</span>
+              <div data-ng-if="!ingredient.editing" data-ng-click="editIngredient($index)" class="notepad-item">{{ ingredient.description }}</div>
+              <input type="text" data-ng-if="ingredient.editing" data-ng-value="ingredient.description" data-ng-model="ingredients[$index].description" data-ng-keydown="saveIngredient($event, $index, true)" focus="ingredient.editing" class="notepad-item editing"/>
+            </div>
+            <input placeholder="Digite o ingrediente e aperte enter" data-ng-model="newIngredient.description" data-ng-keydown="addIngredient($event)" class="notepad-item"/>
+          </div>
+          <h3 class="l-receita-section-titl">Modo de Preparo</h3>
+          <div class="notepad-block">
+            <div class="notepad-block-heading"></div>
+            <div data-ng-repeat="step in steps" class="notepad-item-holder"><span class="notepad-number">
+                 
+                {{ $index + 1 }}</span>
+              <div data-ng-if="!step.editing" data-ng-click="editStep($index)" class="notepad-item">{{ step.description }}</div>
+              <input type="text" data-ng-if="step.editing" data-ng-value="step.description" data-ng-model="steps[$index].description" data-ng-keydown="saveStep($event, $index, true)" focus="step.editing" class="notepad-item editing"/>
+            </div>
+            <input placeholder="Digite a instrução e aperte enter" data-ng-model="newStep.description" data-ng-keydown="addStep($event)" class="notepad-item"/>
+          </div>
+        </article>
       </div>
     </div>
   </div>

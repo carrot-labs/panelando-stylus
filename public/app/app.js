@@ -11,19 +11,19 @@ angular.module('panelando', ['ngRoute'])
 			controller: 'HomeController'
 		})
 
-		.when('/receitas',{
-			templateUrl: 'views/nova-receita.html',
+		.when('/receitas', {
+			templateUrl: 'views/receita.html',
 			controller: 'ReceitasController'
 		})
 
-		.when('/receitas/:id',{
+		.when('/receitas/:id', {
 			templateUrl: 'views/receita.html',
 			controller: 'ReceitaController'
 		})
 
-		.when('/receitas/nova',{
+		.when('/nova', {
 			templateUrl: 'views/nova-receita.html',
-			controller: 'ReceitasController'
+			controller: 'NovaReceitaController'
 		})
 
 		.otherwise({redirectTo: '/'});

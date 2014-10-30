@@ -29,11 +29,11 @@
   a:hover
     text-decoration: none
 
-  &:hover .recipe-caption
+  &:hover .recipe-block-caption
     +animation(bounceDownIn 400ms ease-out)
     opacity: 1
   
-.recipe-title
+.recipe-block-title
   +clearfix()
   +border-top-radius($border-radius-base)
   padding: 12px
@@ -44,11 +44,11 @@
   text-align: center
   color: $gray-dark
 
-.recipe-image
+.recipe-block-image
   position: relative
   overflow: hidden
 
-.recipe-caption
+.recipe-block-caption
   +animation(bounceDownOut 200ms ease-out)
   width: 100%
   height: 100%
@@ -68,7 +68,7 @@
       font-family: $font-family-serif
       font-size: 25px
 
-.recipe-footer
+.recipe-block-footer
   +clearfix()
   +border-bottom-radius($border-radius-base)
   padding: 12px

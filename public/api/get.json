@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
   "name": "Pudim de Leite",
   "ingredientes": ["Leite", "Açúcar", "Leite condensado"], 
   "porcoes": 4,
   "dificuldade": 2,
   "tempo_preparo": "15 min"
+=======
+	"name": "Pudim de Leite",
+	"porcoes": 6,
+	"dificuldade": "Difícil"
+>>>>>>> d40e4247aed309b55efd451dd00da8e3dc96837e
 }
