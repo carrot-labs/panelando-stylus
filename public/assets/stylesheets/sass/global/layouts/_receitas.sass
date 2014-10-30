@@ -37,11 +37,25 @@
       display: inline-block
     
     .l-receita-info-caption
-      display: inline-block
+      display: inline-flex
       font-size: 22px
 
     i
       font-size: 32px
+
+  .l-receita-info-input
+    input
+      width: 55px
+      font-size: 18px
+      display: inline-block
+      position: relative
+      top: -5px
+
+    select
+      @extend input
+      width: 120px
+      top: -2px
+
 
   .l-receita-label
     font-family: $font-family-serif
