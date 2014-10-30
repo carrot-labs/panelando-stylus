@@ -17,57 +17,87 @@
  		$scope.steps       = [];
  		$scope.ingredients = [];
 
- 		$scope.newIngredient = { name: '', editing: false }
+ 		$scope.newStep       = { description: '', editing: false }
+ 		$scope.newIngredient = { description: '', editing: false }
 
  		$scope.addIngredient = function(event) {
-		 	if($scope.newIngredient.name === '' || event.keyCode !== 13) return;
+ 			if($scope.newIngredient.description === '' || event.keyCode !== 13) return;
 
- 				$scope.ingredients.push($scope.newIngredient);
-	 			$scope.newIngredient = {name: '', editing: false};
-
- 				$log.info($scope.ingredients);
+ 			$scope.ingredients.push($scope.newIngredient);
+ 			$scope.newIngredient = { description: '', editing: false };
  		};
 
- 		$scope.editIngredient = function() {};
- 		$scope.saveIngredient = function() {};
+ 		$scope.editIngredient = function(index) {
+ 			$scope.ingredients[index].editing = true;
+ 		};
 
- 		$scope.addStep = function() {};
- 		$scope.editStep = function() {};
- 		$scope.saveStep = function() {};
+ 		$scope.saveIngredient = function(event, index, inputByKeyboard) {
+ 			if(inputByKeyboard) {
+ 				if(event.keyCode === 13) {
+ 					$scope.ingredients[index].editing = false;
+ 				}
+ 				return;
+ 			}
+
+ 			$scope.ingredients[index].editing = false;
+ 		};
+
+ 		$scope.addStep = function(event) {
+ 			if($scope.newStep.description === '' || event.keyCode !== 13) return;
+
+ 			$scope.steps.push($scope.newStep);
+ 			$scope.newStep = { description: '', editing: false };
+ 		};
+
+ 		$scope.editStep = function(index) {
+ 			$scope.steps[index].editing = true;
+ 		};
+
+ 		$scope.saveStep = function(event, index, inputByKeyboard) {
+ 			if(inputByKeyboard) {
+ 				if(event.keyCode === 13) {
+ 					$scope.steps[index].editing = false;
+ 				}
+ 				return;
+ 			}
+
+ 			$scope.steps[index].editing = false;
+ 		};
+
 
  	}])
 
- .controller('ReceitasController', [
- 	'$scope', 
- 	'$http', 
- 	'$receitas', 
- 	function($scope, $http, $receitas) {
+.controller('ReceitasController', [
+	'$scope', 
+	'$http', 
+	'$receitas', 
+	function($scope, $http, $receitas) {
 
 
- 	}])
+	}])
 
- .controller('ReceitaController', [
- 	'$scope',
- 	'$routeParams',
- 	'$receitas',
- 	function($scope, $routeParams, $receitas) {
+.controller('ReceitaController', [
+	'$scope',
+	'$routeParams',
+	'$receitas',
+	function($scope, $routeParams, $receitas) {
 
- 		var id = $routeParams.id;
+		var id = $routeParams.id;
 
- 		var string = "[\"leite\", \"acucar\"]";
+		var string = "[\"leite\", \"acucar\"]";
 
- 		$receitas.get(id, function(data) {
- 			$scope.Receita = data;
- 			$scope.Receita.ingredientes = jQuery.parseJSON(data.ingredientes);
- 		});
+		$receitas.get(id, function(data) {
+			$scope.Receita = data;
+			$scope.Receita.ingredientes = jQuery.parseJSON(data.ingredientes);
+		});
 
- 	}])
+	}])
 
- .controller('IngredientsCtrl', [
- 	'$scope', 
- 	'$log', 
- 	'$ingredientes',
- 	function($scope, $log, $ingredientes) {
+.controller('IngredientsCtrl', [
+	'$scope', 
+	'$log', 
+	'$ingredientes',
+	function($scope, $log, $ingredientes) {
 
 	/**
 	 * The controller reference

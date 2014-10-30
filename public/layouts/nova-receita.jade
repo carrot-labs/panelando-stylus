@@ -23,8 +23,8 @@ div.page-receita
             a(href="#") Cadastrar
    
 
-  div.row
-    div.container
+  div.container
+    div.row
       div.col-md-4
         //-- Main menu
         nav.main-menu(role="navigation")
@@ -52,7 +52,7 @@ div.page-receita
 
         article.l-receita-content
 
-          h2.l-receita-section-title New Ingredientes
+          h2.l-receita-section-title Ingredientes
 
           div.notepad-block
             div.notepad-block-heading
@@ -63,76 +63,56 @@ div.page-receita
               span.notepad-number 
                 |{{ $index + 1 }}
                 
-              div.notepad-item 
-                |{{ ingredient.name }}
-
-            input.notepad-item(
-              data-ng-model="newIngredient.name"
-              data-ng-keydown="addIngredient($event)"
-            )
-
-          h2.l-receita-section-title Ingredientes
-
-          div.notepad-block(ng-controller="IngredientsCtrl as Ingredients")
-            div.notepad-block-heading
-          
-            div(ng-repeat="ingredient in Ingredients.ingredientsList")
-              span.notepad-number 
-                |{{ $index + 1 }}
               div.notepad-item(
-                ng-if="!ingredient.editing"
-                ng-click="Ingredients.editIngredient($index)"
-              ) 
-                |{{ ingredient.name }}
+                data-ng-if="!ingredient.editing"
+                data-ng-click="editIngredient($index)"
+              )
+                |{{ ingredient.description }}
 
               input.notepad-item.editing(
                 type="text",
-                ng-if="ingredient.editing"
-                ng-value="ingredient.name"
-                ng-model="Ingredients.ingredientsList[$index].name"
-                ng-keydown="Ingredients.saveIngredient($event, $index, true)"
-                ng-blur="Ingredients.saveIngredient($event, $index)"
+                data-ng-if="ingredient.editing"
+                data-ng-value="ingredient.description"
+                data-ng-model="ingredients[$index].description"
+                data-ng-keydown="saveIngredient($event, $index, true)"
                 focus="ingredient.editing"
               )  
 
             input.notepad-item(
-              type="text", 
-              placeholder="Digite o ingrediente e tecle enter",
-              ng-model="Ingredients.newIngredient.name", 
-              ng-keydown="Ingredients.addIngredient($event)"
+              placeholder="Digite o ingrediente e aperte enter"
+              data-ng-model="newIngredient.description"
+              data-ng-keydown="addIngredient($event)"
             )
 
           h2.l-receita-section-title Modo de Preparo
 
-          div.notepad-block(ng-controller="IngredientsCtrl as Ingredients")
+          div.notepad-block
             div.notepad-block-heading
           
-            div(ng-repeat="ingredient in Ingredients.ingredientsList")
+            div.notepad-item-holder(
+              data-ng-repeat="step in steps"
+            )
               span.notepad-number 
                 |{{ $index + 1 }}
+                
               div.notepad-item(
-                ng-if="!ingredient.editing"
-                ng-click="Ingredients.editIngredient($index)"
-              ) 
-                |{{ ingredient.name }}
+                data-ng-if="!step.editing"
+                data-ng-click="editStep($index)"
+              )
+                |{{ step.description }}
 
               input.notepad-item.editing(
                 type="text",
-                ng-if="ingredient.editing"
-                ng-value="ingredient.name"
-                ng-model="Ingredients.ingredientsList[$index].name"
-                ng-keydown="Ingredients.saveIngredient($event, $index, true)"
-                ng-blur="Ingredients.saveIngredient($event, $index)"
-                focus="ingredient.editing"
+                data-ng-if="step.editing"
+                data-ng-value="step.description"
+                data-ng-model="steps[$index].description"
+                data-ng-keydown="saveStep($event, $index, true)"
+                focus="step.editing"
               )  
 
-              div.notepad-item
-                |&nbsp;
-
-            input.notepad-item(
-              type="text", 
-              placeholder="Digite o ingrediente e tecle enter",
-              ng-model="Ingredients.newIngredient.name", 
-              ng-keydown="Ingredients.addIngredient($event)"
+            textarea.notepad-item(
+              placeholder="Digite a instrução e aperte enter"
+              data-ng-model="newStep.description"
+              data-ng-keydown="addStep($event)"
             )
 
