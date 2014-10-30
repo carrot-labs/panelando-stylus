@@ -1,0 +1,7 @@
+{
+  "name": "Pudim de Leite",
+  "ingredientes": ["Leite", "Açúcar", "Leite condensado"], 
+  "porcoes": 4,
+  "dificuldade": 2,
+  "tempo_preparo": "15 min"
+}
