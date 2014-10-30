@@ -32,7 +32,7 @@
       </div>
       <div class="col-md-8">
         <article class="l-receita-content">
-          <h2 class="l-receita-section-title">Ingredientes</h2>
+          <h3 class="l-receita-section-titl">Ingredientes</h3>
           <div class="notepad-block">
             <div class="notepad-block-heading"></div>
             <div data-ng-repeat="ingredient in ingredients" class="notepad-item-holder"><span class="notepad-number">
@@ -43,7 +43,7 @@
             </div>
             <input placeholder="Digite o ingrediente e aperte enter" data-ng-model="newIngredient.description" data-ng-keydown="addIngredient($event)" class="notepad-item"/>
           </div>
-          <h2 class="l-receita-section-title">Modo de Preparo</h2>
+          <h3 class="l-receita-section-titl">Modo de Preparo</h3>
           <div class="notepad-block">
             <div class="notepad-block-heading"></div>
             <div data-ng-repeat="step in steps" class="notepad-item-holder"><span class="notepad-number">
@@ -52,7 +52,7 @@
               <div data-ng-if="!step.editing" data-ng-click="editStep($index)" class="notepad-item">{{ step.description }}</div>
               <input type="text" data-ng-if="step.editing" data-ng-value="step.description" data-ng-model="steps[$index].description" data-ng-keydown="saveStep($event, $index, true)" focus="step.editing" class="notepad-item editing"/>
             </div>
-            <textarea placeholder="Digite a instrução e aperte enter" data-ng-model="newStep.description" data-ng-keydown="addStep($event)" class="notepad-item"></textarea>
+            <input placeholder="Digite a instrução e aperte enter" data-ng-model="newStep.description" data-ng-keydown="addStep($event)" class="notepad-item"/>
           </div>
         </article>
       </div>

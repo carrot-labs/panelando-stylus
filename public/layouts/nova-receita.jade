@@ -52,7 +52,7 @@ div.page-receita
 
         article.l-receita-content
 
-          h2.l-receita-section-title Ingredientes
+          h3.l-receita-section-titl Ingredientes
 
           div.notepad-block
             div.notepad-block-heading
@@ -84,7 +84,7 @@ div.page-receita
               data-ng-keydown="addIngredient($event)"
             )
 
-          h2.l-receita-section-title Modo de Preparo
+          h3.l-receita-section-titl Modo de Preparo
 
           div.notepad-block
             div.notepad-block-heading
@@ -110,7 +110,7 @@ div.page-receita
                 focus="step.editing"
               )  
 
-            textarea.notepad-item(
+            input.notepad-item(
               placeholder="Digite a instrução e aperte enter"
               data-ng-model="newStep.description"
               data-ng-keydown="addStep($event)"
