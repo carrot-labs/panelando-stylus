@@ -21,12 +21,25 @@
     font-family: $font-family-brand
 
   .l-receita-image
-    margin: 0 -20px
+    margin: 0 -21px
     img
       min-width: 100%
 
-    > *
-      width: 100%
+  .l-receita-btn-file
+    +transition(all .1s ease-in-out)
+    padding: 5px 7px
+    position: relative
+    background: white
+    border-radius: $border-radius-base
+    border: 2px solid $gray-dark
+    font-family: $font-family-serif
+    font-size: 20px
+    color: $gray-dark
+    &,
+    & *
+      cursor: pointer
+
+
 
   .l-receita-info
     margin: 0 -20px

@@ -38,13 +38,13 @@
               <input data-ng-model="receita.name" class="notepad-item"/>
             </div>
           </div>
-          <div style="margin-top: 30px" class="l-receita-image row">
+          <h3>Imagem da Receita</h3>
+          <div class="l-receita-image">
             <div data-provides="fileinput" class="fileinput fileinput-new">
               <div data-trigger="fileinput" class="fileinput-preview"></div>
-              <div class="fileinput-new"><span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span>
+              <div class="fileinput-new fileinput-holder"><span class="btn-file"><span href="" class="fileinput-new l-receita-btn-file btn-lg"><i class="icon icon-plus-squared-alt"></i>Escolher imagem</span>
                   <input type="text" ng-model="recipe.image"/>
                   <input type="file" name="file" ng-file-select="onFileSelect($files)"/></span></div>
-              <button ng-click="superUpload()" class="btn btn-lg btn-danger">Super Upload</button>
             </div>
           </div>
           <div class="l-receita-info row">

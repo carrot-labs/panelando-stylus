@@ -61,20 +61,23 @@ div.page-receita
                 data-ng-model="receita.name"
               )
 
-          div.l-receita-image.row(style="margin-top: 30px")
+          h3 Imagem da Receita
 
+
+          div.l-receita-image
 
             div.fileinput.fileinput-new(data-provides="fileinput")
               div.fileinput-preview(data-trigger="fileinput")
-              div.fileinput-new
-                span.btn.btn-default.btn-file
-                  span.fileinput-new Select image
+              div.fileinput-new.fileinput-holder
+                span.btn-file
+                  span.fileinput-new.l-receita-btn-file.btn-lg(href="")
+                    i.icon.icon-plus-squared-alt
+                    |Escolher imagem
+
                   //- input(type="hidden", name="MAX_FILE_SIZE", value="30000000")
                   input(type="text", ng-model="recipe.image")
                   input(type="file", name="file", ng-file-select="onFileSelect($files)")
               
-              button(class="btn btn-lg btn-danger" ng-click="superUpload()") Super Upload
-
 
           div.l-receita-info.row
             ul
