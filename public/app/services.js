@@ -1,12 +1,5 @@
 angular.module('panelando')
 
-<<<<<<< HEAD
-.factory('posts', [function() {
-	var o = {
-		posts: []
-	};
-}])
-=======
 .factory('$receitas', function($http) {
 	var o = {}
 
@@ -49,4 +42,3 @@ angular.module('panelando')
 	};
 	return o;
 }) 
->>>>>>> d40e4247aed309b55efd451dd00da8e3dc96837e
