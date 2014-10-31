@@ -7,12 +7,64 @@
 
  }])
 
- .controller('NovaReceitaController', [
+.controller('NovaReceitaController', [
  	'$scope', 
  	'$http',
  	'$log', 
+ 	'$upload',
  	'$receitas', 
- 	function($scope, $http, $log, $receitas) {
+ 	function($scope, $http, $log, $upload, $receitas) {
+
+ 		/** ========== Angular Upload Area ========== **/
+
+
+
+			$scope.files = [];
+
+
+			$scope.superUpload = function(files) {
+				$log.info($scope.files[0]);
+
+				var file = $scope.files[0];
+
+				$scope.upload = $upload.upload({
+		      url: 'api/save.php',
+		      data: {myObj: $scope.myModelObj},
+		      file: file,
+		    }).progress(function(evt) {
+		      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+		    }).success(function(data, status, headers, config) {
+		      console.log(data);
+		    });
+			};
+
+
+		  $scope.onFileSelect = function($files) {
+		    for (var i = 0; i < $files.length; i++) {
+		      var file = $files[i];
+		      $scope.files.push($files[i]);
+		      // $scope.upload = $upload.upload({
+		      //   url: 'server.php', //upload.php script, node.js route, or servlet url
+		      //   data: {myObj: $scope.myModelObj},
+		      //   file: file,
+		      // }).progress(function(evt) {
+		      //   console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+		      // }).success(function(data, status, headers, config) {
+		      //   console.log(data);
+		      // });
+		    }
+		  };
+
+
+
+
+
+ 		/** ========================================= **/
+
+
+
+
+
 
  		$scope.steps       = [];
  		$scope.ingredients = [];

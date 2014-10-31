@@ -41,3 +41,21 @@ function save($table, $fields, $values) {
 
 	$insertion->execute();
 }
+
+function changeInputFileName($newName, $fileName) {
+	$extension = explode('.', $fileName);
+	$fileName = $newName . '.' . $extension[1];
+
+	return $fileName;
+}
+
+function uploadFile($file, $name, $location) {
+	$file_name = changeInputFileName($name, $file['name']);
+	$temp_file = $file['tmp_name'];
+
+	if(!is_dir($location)) {
+		mkdir($location, 0777, true);
+	}
+
+	move_uploaded_file($temp_file, $location . $file_name);
+}
