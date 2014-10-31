@@ -12,4 +12,6 @@ if(isset($_FILES['file'])) {
 
 	uploadFile($image, $fileName, $staticFolder);
 	echo json_encode($_FILES['file']);
+} {
+	echo "NOPE";
 }
