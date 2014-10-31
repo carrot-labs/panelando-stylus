@@ -3,3 +3,6 @@
 
 # Node dependencies folder
 node_modules
+
+public/images/static
+public/images/super-static
