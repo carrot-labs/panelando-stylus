@@ -70,7 +70,7 @@ div.page-receita
               div.fileinput-preview(data-trigger="fileinput")
               div.fileinput-new.fileinput-holder
                 span.btn-file
-                  span.fileinput-new.l-receita-btn-file.btn-lg(href="")
+                  span.fileinput-new.l-receita-btn-file.btn-lg
                     i.icon.icon-plus-squared-alt
                     |Escolher imagem
 
@@ -168,4 +168,12 @@ div.page-receita
               data-ng-model="newStep.description"
               data-ng-keydown="addStep($event)"
             )
+
+          button.l-receita-btn-submit.btn-lg(
+            type="submit"
+            data-ng-click="saveRecipe()"
+          )
+            i.icon.icon-ok   
+            |Salvar Receita
+
 

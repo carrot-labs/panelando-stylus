@@ -39,8 +39,6 @@
     & *
       cursor: pointer
 
-
-
   .l-receita-info
     margin: 0 -20px
     padding: 12px 0
@@ -77,3 +75,21 @@
     font-family: $font-family-serif
     font-size: 18px
     font-weight: normal
+
+  .l-receita-btn-submit
+    @extend .l-receita-btn-file
+    margin-top: 25px
+    padding-left: 15px
+    padding-right: 15px
+    font-size: 22px
+    float: right
+    background: white
+    &:hover
+      cursor: pointer
+      background: $brand-primary
+      text-decoration: underline
+      i
+        text-decoration: none
+    i
+      margin-right: 10px
+    

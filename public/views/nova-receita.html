@@ -42,7 +42,7 @@
           <div class="l-receita-image">
             <div data-provides="fileinput" class="fileinput fileinput-new">
               <div data-trigger="fileinput" class="fileinput-preview"></div>
-              <div class="fileinput-new fileinput-holder"><span class="btn-file"><span href="" class="fileinput-new l-receita-btn-file btn-lg"><i class="icon icon-plus-squared-alt"></i>Escolher imagem</span>
+              <div class="fileinput-new fileinput-holder"><span class="btn-file"><span class="fileinput-new l-receita-btn-file btn-lg"><i class="icon icon-plus-squared-alt"></i>Escolher imagem</span>
                   <input type="text" ng-model="recipe.image"/>
                   <input type="file" name="file" ng-file-select="onFileSelect($files)"/></span></div>
             </div>
@@ -104,6 +104,7 @@
             </div>
             <input placeholder="Digite a instrução e aperte enter" data-ng-model="newStep.description" data-ng-keydown="addStep($event)" class="notepad-item"/>
           </div>
+          <button type="submit" data-ng-click="saveRecipe()" class="l-receita-btn-submit btn-lg"><i class="icon icon-ok">  </i>Salvar Receita</button>
         </article>
       </div>
     </div>
