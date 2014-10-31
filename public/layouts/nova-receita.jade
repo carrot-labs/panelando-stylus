@@ -57,7 +57,9 @@ div.page-receita
           div.notepad-block
           
             div.notepad-item-holder
-              input.notepad-item
+              input.notepad-item(
+                data-ng-model="receita.name"
+              )
 
           div.l-receita-image.row(style="margin-top: 30px")
 

@@ -18,20 +18,30 @@
  		/** ========== Angular Upload Area ========== **/
 
 
-			$scope.recipe = {
+			$scope.receita = {
+				name: 'hey',
 				images: []
 			};
 
 
 			$scope.superUpload = function() {
-				$log.info($scope.recipe.images[0]);
+				// $log.info($scope.receita.images[0]);
 
-				var file = $scope.recipe.images[0];
+				var file = $scope.receita.images[0];
+
+				$receitas.save({name: 'yes', age: 18}, function(data) {
+					$log.info(data);
+				})
 
 				$scope.upload = $upload.upload({
 		      url: 'api/save.php',
-		      data: {myObj: $scope.recipe.image},
-		      file: file,
+		      method: 'POST',
+		      data: $.param({
+		      	'image': $scope.receita.image,
+		      	'name': $scope.receita.name
+		      }),
+		  		headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
+		      file: file
 		    }).progress(function(evt) {
 		      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
 		    }).success(function(data, status, headers, config) {
@@ -42,7 +52,7 @@
 
 		  $scope.onFileSelect = function($files) {
 		    for (var i = 0; i < $files.length; i++) {
-		      $scope.recipe.images.push($files[i]);
+		      $scope.receita.images.push($files[i]);
 		    }
 		  };
 
