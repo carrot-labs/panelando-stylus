@@ -1,9 +1,0 @@
-/*===== Conteudo =====*/
-
-- Alinhar labels  com quebra de linha
-
-- Quando for pessoa juridica adicionar o campo razão social embaixo do nome do responsável e trocar de CPF para CNPJ
-
-/*===== Home =====*/
-
-- Colocar progress-bar
