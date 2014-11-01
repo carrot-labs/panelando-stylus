@@ -54,32 +54,18 @@
   </div>
   <div class="container">
     <div class="row l-main-section">
-      <div class="col-md-4">
-        <div class="recipe-block"><a href="index.html">
-            <div class="recipe-block-title">Bife com Batatas</div>
+      <div data-ng-repeat="recipe in recipes" class="col-md-4">
+        <div class="recipe-block"><a href="#/receitas/{{recipe.id}}">
+            <div class="recipe-block-title">{{recipe.nome}}</div>
             <div class="recipe-block-image">
               <div class="recipe-block-caption">
-                <div class="item"><i class="icon icon-clock-1"></i><span>15 Min</span></div>
-                <div class="item"><i class="icon icon-user-1"></i><span>6 Porções</span></div>
-                <div class="item"><i class="icon icon-beaker-1"></i><span>Fácil</span></div>
-              </div><img src="assets/images/static/steak-with-potatoes.jpg" class="img-responsive"/>
+                <div class="item"><i class="icon icon-clock-1"></i><span>{{recipe.tempo_preparo}} Min</span></div>
+                <div class="item"><i class="icon icon-user-1"></i><span>{{recipe.num_porcoes}} Porções</span></div>
+                <div class="item"><i class="icon icon-beaker-1"></i><span>{{recipe.dificuldade}}</span></div>
+              </div><img data-ng-src="assets/images/super-static/{{recipe.imagem}}" class="img-responsive"/>
             </div>
             <div class="recipe-block-footer">
-              <div class="pull-left"><strong>Postado em:</strong><em>14/12/2014</em></div><a href="#" class="link"><i class="icon icon-plus-squared-alt"></i>Ver Receita</a>
-            </div></a></div>
-      </div>
-      <div class="col-md-4">
-        <div class="recipe-block"><a href="index.html">
-            <div class="recipe-block-title">Sanduíche de Filet Mignon</div>
-            <div class="recipe-block-image">
-              <div class="recipe-block-caption">
-                <div class="item"><i class="icon icon-clock-1"></i><span>15 Min</span></div>
-                <div class="item"><i class="icon icon-user-1"></i><span>6 Porções</span></div>
-                <div class="item"><i class="icon icon-beaker-1"></i><span>Fácil</span></div>
-              </div><img src="assets/images/static/filet-mignon-sandwich.jpg" class="img-responsive"/>
-            </div>
-            <div class="recipe-block-footer">
-              <div class="pull-left"><strong>Postado em:</strong><em>14/12/2014</em></div><a href="#" class="link"><i class="icon icon-plus-squared-alt"></i>Ver Receita</a>
+              <div class="pull-left"><strong>Postado em:</strong><em>14/12/2014</em></div><a href="#/receitas/{{recipe.id}}" class="link"><i class="icon icon-plus-squared-alt"></i>Ver Receita</a>
             </div></a></div>
       </div>
     </div>

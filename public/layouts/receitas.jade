@@ -81,63 +81,33 @@ div.page-home
 
   div.container
     div.row.l-main-section
-      div.col-md-4
+      div.col-md-4(data-ng-repeat="recipe in recipes")
         div.recipe-block
-          a(href="index.html")
+          a(href="#/receitas/{{recipe.id}}")
             div.recipe-block-title
-              |Bife com Batatas
+              |{{recipe.nome}}
 
             div.recipe-block-image
               div.recipe-block-caption
                 div.item
                   i.icon.icon-clock-1
-                  span 15 Min
+                  span {{recipe.tempo_preparo}} Min
 
                 div.item
                   i.icon.icon-user-1
-                  span 6 Porções
+                  span {{recipe.num_porcoes}} Porções
 
                 div.item
                   i.icon.icon-beaker-1
-                  span Fácil
+                  span {{recipe.dificuldade}}
 
-              img.img-responsive(src="assets/images/static/steak-with-potatoes.jpg")
+              img.img-responsive(data-ng-src="assets/images/super-static/{{recipe.imagem}}")
 
             div.recipe-block-footer
               div.pull-left
                 strong Postado em:
                 em 14/12/2014
-              a.link(href="#")
+              a.link(href="#/receitas/{{recipe.id}}")
                 i.icon.icon-plus-squared-alt
                 |Ver Receita
-
-
-      div.col-md-4
-        div.recipe-block
-          a(href="index.html")
-            div.recipe-block-title
-              |Sanduíche de Filet Mignon
-
-            div.recipe-block-image
-              div.recipe-block-caption
-                div.item
-                  i.icon.icon-clock-1
-                  span 15 Min
-
-                div.item
-                  i.icon.icon-user-1
-                  span 6 Porções
-
-                div.item
-                  i.icon.icon-beaker-1
-                  span Fácil
-
-              img.img-responsive(src="assets/images/static/filet-mignon-sandwich.jpg")
-
-            div.recipe-block-footer
-              div.pull-left
-                strong Postado em:
-                em 14/12/2014
-              a.link(href="#")
-                i.icon.icon-plus-squared-alt
-                |Ver Receita
+                

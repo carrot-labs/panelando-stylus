@@ -25,6 +25,7 @@
 
 .recipe-block
   +clearfix()
+  position: relative
 
   a:hover
     text-decoration: none
@@ -36,16 +37,20 @@
 .recipe-block-title
   +clearfix()
   +border-top-radius($border-radius-base)
+  width: 100%
+  position: absolute
   padding: 12px
+  z-index: 1000
   background: $brand-primary
   font-family: $font-family-serif
-  font-size: 20px
+  font-size: 18px
   font-weight: normal
   text-align: center
   color: $gray-dark
 
 .recipe-block-image
   position: relative
+  top: 48px
   overflow: hidden
 
 .recipe-block-caption
@@ -71,6 +76,8 @@
 .recipe-block-footer
   +clearfix()
   +border-bottom-radius($border-radius-base)
+  position: relative
+  top: 48px
   padding: 12px
   background: #fff
   box-shadow: 0 2px 2px rgba(11, 25, 28, 0.1)

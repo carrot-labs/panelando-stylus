@@ -52,20 +52,20 @@ function($scope, $http, $log, $upload, $receitas) {
 			$log.info(data);
 		});
 
-		// $scope.upload = $upload.upload({
-		// 	url: 'api/save.php',
-		// 	method: 'POST',
-		// 	data: { 
-		// 		'image': $scope.recipe.image, 
-		// 		'file_name': fileName
-		// 	},
-		// 	headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
-		// 	file: $scope.recipe.image[0]
-		// }).progress(function(evt) {
-		// 	$log.info('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-		// }).success(function(data, status, headers, config) {
-		// 	$log.info(data);
-		// });
+		$scope.upload = $upload.upload({
+			url: 'api/save.php',
+			method: 'POST',
+			data: { 
+				'image': $scope.recipe.image, 
+				'file_name': fileName
+			},
+			headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
+			file: $scope.recipe.image[0]
+		}).progress(function(evt) {
+			$log.info('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+		}).success(function(data, status, headers, config) {
+			$log.info(data);
+		});
 
  	};
 
