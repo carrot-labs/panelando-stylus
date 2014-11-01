@@ -35,7 +35,7 @@
           <h3>Nome da Receita</h3>
           <div class="notepad-block">
             <div class="notepad-item-holder">
-              <input data-ng-model="receita.name" class="notepad-item"/>
+              <input data-ng-model="recipe.name" class="notepad-item"/>
             </div>
           </div>
           <h3>Imagem da Receita</h3>
@@ -44,7 +44,7 @@
               <div data-trigger="fileinput" class="fileinput-preview"></div>
               <div class="fileinput-new fileinput-holder"><span class="btn-file"><span class="fileinput-new l-receita-btn-file btn-lg"><i class="icon icon-plus-squared-alt"></i>Escolher imagem</span>
                   <input type="text" ng-model="recipe.image"/>
-                  <input type="file" name="file" ng-file-select="onFileSelect($files)"/></span></div>
+                  <input type="file" name="file" data-ng-file-select="onFileSelect($files)"/></span></div>
             </div>
           </div>
           <div class="l-receita-info row">
@@ -71,11 +71,7 @@
                 <h5><i class="icon icon-beaker-1"> </i>
                   <div class="l-receita-info-caption">
                     <div class="l-receita-info-input">
-                      <select class="form-control">
-                        <option>Fácil</option>
-                        <option>Médio</option>
-                        <option>Difícil</option>
-                      </select>
+                      <select data-ng-model="recipe.difficulty.selected" ng-options="item.label for item in recipe.difficulty.options" class="form-control"></select>
                     </div>
                   </div>
                 </h5>
@@ -85,7 +81,7 @@
           <h3 class="l-receita-section-titl">Ingredientes</h3>
           <div class="notepad-block">
             <div class="notepad-block-heading"></div>
-            <div data-ng-repeat="ingredient in ingredients" class="notepad-item-holder"><span class="notepad-number">
+            <div data-ng-repeat="ingredient in recipe.ingredients" class="notepad-item-holder"><span class="notepad-number">
                  
                 {{ $index + 1 }}</span>
               <div data-ng-if="!ingredient.editing" data-ng-click="editIngredient($index)" class="notepad-item">{{ ingredient.description }}</div>
@@ -93,10 +89,10 @@
             </div>
             <input placeholder="Digite o ingrediente e aperte enter" data-ng-model="newIngredient.description" data-ng-keydown="addIngredient($event)" class="notepad-item"/>
           </div>
-          <h3 class="l-receita-section-titl">Modo de Preparo</h3>
+          <h3 class="l-receita-label">Modo de Preparo</h3>
           <div class="notepad-block">
             <div class="notepad-block-heading"></div>
-            <div data-ng-repeat="step in steps" class="notepad-item-holder"><span class="notepad-number">
+            <div data-ng-repeat="step in recipe.steps" class="notepad-item-holder"><span class="notepad-number">
                  
                 {{ $index + 1 }}</span>
               <div data-ng-if="!step.editing" data-ng-click="editStep($index)" class="notepad-item">{{ step.description }}</div>

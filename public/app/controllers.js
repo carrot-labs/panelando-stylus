@@ -15,8 +15,10 @@
  	'$receitas', 
  	function($scope, $http, $log, $upload, $receitas) {
 
- 		$scope.saveRecipe = function() {
+ 		$scope.options = [{ "value": 1, "text": "1st" }, { "value": 2, "text": "2nd" }];
 
+ 		$scope.saveRecipe = function() {
+ 			$log.info($scope.recipe.difficulty.selected); 			
  		};
 
  		/** ========== Angular Upload Area ========== **/
@@ -27,26 +29,27 @@
 				images: [],
 				preparationTime: '',
 				numberOfPortions: '',
-				difficulty: '',
+				difficulty: {
+					selected: {},
+					options: [
+						{label: 'Fácil', value: 1},
+						{label: 'Médio', value: 2},
+						{label: 'Difícil', value: 3}
+					]
+				},
 				ingredients: [],
 				steps: []
 			};
 
 
 			$scope.superUpload = function() {
-				// $log.info($scope.receita.images[0]);
-
 				var file = $scope.receita.images[0];
-
-				$receitas.save({name: 'yes', age: 18}, function(data) {
-					$log.info(data);
-				})
 
 				$scope.upload = $upload.upload({
 		      url: 'api/save.php',
 	      method: 'POST',
 	      data: $.param({
-	      	'image': $scope.receita.image,
+	      	'image': $scope.receipe.image,
 	      	'name': $scope.receita.name
 	      }),
 	  		headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},

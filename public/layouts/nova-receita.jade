@@ -58,7 +58,7 @@ div.page-receita
           
             div.notepad-item-holder
               input.notepad-item(
-                data-ng-model="receita.name"
+                data-ng-model="recipe.name"
               )
 
           h3 Imagem da Receita
@@ -76,7 +76,10 @@ div.page-receita
 
                   //- input(type="hidden", name="MAX_FILE_SIZE", value="30000000")
                   input(type="text", ng-model="recipe.image")
-                  input(type="file", name="file", ng-file-select="onFileSelect($files)")
+                  input(type="file", 
+                    name="file", 
+                    data-ng-file-select="onFileSelect($files)"
+                  )
               
 
           div.l-receita-info.row
@@ -100,10 +103,11 @@ div.page-receita
                   i.icon.icon-beaker-1 
                   div.l-receita-info-caption
                     div.l-receita-info-input
-                      select.form-control
-                        option Fácil
-                        option Médio
-                        option Difícil
+                      select.form-control(
+                        data-ng-model="recipe.difficulty.selected"
+                        ng-options="item.label for item in recipe.difficulty.options"
+                      )
+
 
           h3.l-receita-section-titl Ingredientes
 
@@ -111,7 +115,7 @@ div.page-receita
             div.notepad-block-heading
           
             div.notepad-item-holder(
-              data-ng-repeat="ingredient in ingredients"
+              data-ng-repeat="ingredient in recipe.ingredients"
             )
               span.notepad-number 
                 |{{ $index + 1 }}
@@ -137,13 +141,13 @@ div.page-receita
               data-ng-keydown="addIngredient($event)"
             )
 
-          h3.l-receita-section-titl Modo de Preparo
+          h3.l-receita-label Modo de Preparo
 
           div.notepad-block
             div.notepad-block-heading
           
             div.notepad-item-holder(
-              data-ng-repeat="step in steps"
+              data-ng-repeat="step in recipe.steps"
             )
               span.notepad-number 
                 |{{ $index + 1 }}
