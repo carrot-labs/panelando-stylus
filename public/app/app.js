@@ -12,16 +12,16 @@ angular.module('panelando', ['ngRoute', 'ngFileUpload'])
 		})
 
 		.when('/receitas', {
-			templateUrl: 'views/receita.html',
+			templateUrl: 'views/receitas.html',
 			controller: 'ReceitasController'
 		})
 
-		.when('/receitas/:id', {
+		.when('/receitas/{:id}', {
 			templateUrl: 'views/receita.html',
 			controller: 'ReceitaController'
 		})
 
-		.when('/nova', {
+		.when('/receitas/nova', {
 			templateUrl: 'views/nova-receita.html',
 			controller: 'NovaReceitaController'
 		})

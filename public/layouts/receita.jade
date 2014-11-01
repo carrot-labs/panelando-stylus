@@ -29,24 +29,23 @@ div.page-receita
         //-- Main menu
         nav.main-menu(role="navigation")
           ul.nav.nav-pills.nav-stacked
-            li
+            li.active
               a(href="#/")
                 |Home
                 div.link-icon
                   i.icon.icon-shop
 
-            li.active
-              a(href="#/receitas/2")
+            li
+              a(href="#/receitas")
                 |Receitas
                 div.link-icon
                   i.icon.icon-food-1
 
             li
-              a(href="#/nova")
+              a(href="#/receitas/nova")
                 |Nova Receita
                 div.link-icon
                   i.icon.icon-doc-1
-
 
       div.col-md-8(ng-if="recipe")
 
