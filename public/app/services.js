@@ -25,7 +25,7 @@ angular.module('panelando')
 
 	o.save = function(receita, callback) {
 		$http({
-		  url: "api/save.php", 
+		  url: "api/insert.php", 
 		  method: "POST",
 		  data: $.param({
 		  	'name': receita.name,

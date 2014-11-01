@@ -12,8 +12,6 @@ $foo = array();
 foreach($steps as $step) { array_push($foo, $step['name']); }
 $steps = json_encode($foo);
 
-$image = 'fake.png';
-
 save(
 	'receitas', 
 	array(
@@ -30,7 +28,7 @@ save(
 		$image,
 		$preparation_time,
 		$number_of_portions,
-		$difficulty
+		$difficulty,
 		$ingredients,
 		$steps
 	)

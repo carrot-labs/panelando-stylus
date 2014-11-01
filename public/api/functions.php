@@ -50,12 +50,11 @@ function changeInputFileName($newName, $fileName) {
 }
 
 function uploadFile($file, $name, $location) {
-	$file_name = changeInputFileName($name, $file['name']);
 	$temp_file = $file['tmp_name'];
 
 	if(!is_dir($location)) {
 		mkdir($location, 0777, true);
 	}
 
-	move_uploaded_file($temp_file, $location . $file_name);
+	move_uploaded_file($temp_file, $location . $name);
 }

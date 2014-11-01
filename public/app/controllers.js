@@ -17,22 +17,45 @@ function($scope, $http, $log, $upload, $receitas) {
 
  	$scope.saveRecipe = function() {
 
+		var extension = $scope.recipe.image[0].name.split('.')[1];
+ 		var fileName = Date.now() + '.' + extension;
+
+ 		$log.info(fileName);
+
 		$http({
-	  url: "api/save.php", 
-	  method: "POST",
-	  data: $.param({
-	  	'name': $scope.recipe.name,
-			'preparation_time': $scope.recipe.preparationTime,
-			'number_of_portions': $scope.recipe.numberOfPortions,
-			'difficulty': $scope.recipe.difficulty.selected.value,
-			'ingredients': $scope.recipe.ingredients,
-			'steps': $scope.recipe.steps,
-	  }),
-	  headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}
+		  url: "api/insert.php", 
+		  method: "POST",
+		  data: $.param({
+		  	'name': $scope.recipe.name,
+		  	'image': fileName,
+				'preparation_time': $scope.recipe.preparationTime,
+				'number_of_portions': $scope.recipe.numberOfPortions,
+				'difficulty': $scope.recipe.difficulty.selected.value,
+				'ingredients': $scope.recipe.ingredients,
+				'steps': $scope.recipe.steps,
+		  }),
+		  headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}
 		})
 		.success(function(data, status) {
 			$log.info(data);
 		});
+
+		$scope.upload = $upload.upload({
+			url: 'api/save.php',
+			method: 'POST',
+			data: { 
+				'image': $scope.recipe.image, 
+				'file_name': fileName
+			},
+			headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
+			file: $scope.recipe.image[0]
+		}).progress(function(evt) {
+			$log.info('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+		}).success(function(data, status, headers, config) {
+			$log.info(data);
+		});
+	
+
 
  	};
 
