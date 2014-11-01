@@ -52,7 +52,7 @@ div.page-receita
 
         article.l-receita-content
 
-          h3 Nome da Receita
+          h3.l-receita-label Nome da Receita
 
           div.notepad-block
           
@@ -61,7 +61,7 @@ div.page-receita
                 data-ng-model="recipe.name"
               )
 
-          h3 Imagem da Receita
+          h3.l-receita-label Imagem da Receita
 
 
           div.l-receita-image
@@ -89,14 +89,18 @@ div.page-receita
                   i.icon.icon-clock-1 
                   div.l-receita-info-caption
                     div.l-receita-info-input
-                      input.form-control
+                      input.form-control(
+                        data-ng-model="recipe.numberOfPortions"
+                      )
                     | &nbsp;min
               li.col-md-4
                 h5
                   i.icon.icon-user-1 
                   div.l-receita-info-caption
                     div.l-receita-info-input
-                      input.form-control
+                      input.form-control(
+                        data-ng-model="recipe.preparationTime"
+                      )
                     | &nbsp;porções
               li.col-md-4
                 h5
@@ -105,11 +109,11 @@ div.page-receita
                     div.l-receita-info-input
                       select.form-control(
                         data-ng-model="recipe.difficulty.selected"
-                        ng-options="item.label for item in recipe.difficulty.options"
+                        ng-options="item.name for item in recipe.difficulty.options"
                       )
 
 
-          h3.l-receita-section-titl Ingredientes
+          h3.l-receita-label Ingredientes
 
           div.notepad-block
             div.notepad-block-heading

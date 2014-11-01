@@ -15,26 +15,47 @@
  	'$receitas', 
  	function($scope, $http, $log, $upload, $receitas) {
 
- 		$scope.options = [{ "value": 1, "text": "1st" }, { "value": 2, "text": "2nd" }];
-
  		$scope.saveRecipe = function() {
+ 			$log.info($scope.recipe.name);
+ 			$log.info($scope.recipe.image);
+ 			$log.info($scope.recipe.preparationTime);
+ 			$log.info($scope.recipe.numberOfPortions);
  			$log.info($scope.recipe.difficulty.selected); 			
+ 			$log.info($scope.recipe.ingredients);
+ 			$log.info($scope.recipe.steps);
+
+
+ 			$http({
+		  url: "api/testSave.php", 
+		  method: "POST",
+		  // data: $.param({'id': id}),
+		  headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}
+			})
+			.success(function(data, status) {
+				$log.info(data);
+			});
+
+
+
+
+
+
+
+
+
  		};
-
- 		/** ========== Angular Upload Area ========== **/
-
 
 			$scope.recipe = {
 				name: '',
-				images: [],
+				image: [],
 				preparationTime: '',
 				numberOfPortions: '',
 				difficulty: {
 					selected: {},
 					options: [
-						{label: 'Fácil', value: 1},
-						{label: 'Médio', value: 2},
-						{label: 'Difícil', value: 3}
+						{name: 'Fácil', value: 1},
+						{name: 'Médio', value: 2},
+						{name: 'Difícil', value: 3}
 					]
 				},
 				ingredients: [],
@@ -42,14 +63,14 @@
 			};
 
 
-			$scope.superUpload = function() {
-				var file = $scope.receita.images[0];
+		$scope.superUpload = function() {
+			var file = $scope.recipe.images[0];
 
-				$scope.upload = $upload.upload({
-		      url: 'api/save.php',
+			$scope.upload = $upload.upload({
+		    url: 'api/save.php',
 	      method: 'POST',
 	      data: $.param({
-	      	'image': $scope.receipe.image,
+	      	'image': $scope.recipe.image,
 	      	'name': $scope.receita.name
 	      }),
 	  		headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
@@ -64,10 +85,9 @@
 
 	  $scope.onFileSelect = function($files) {
 	    for (var i = 0; i < $files.length; i++) {
-	      $scope.receita.images.push($files[i]);
+	      $scope.recipe.image.push($files[i]);
 	    }
 	  };
-
 
  		$scope.newStep       = { description: '', editing: false }
  		$scope.newIngredient = { description: '', editing: false }
