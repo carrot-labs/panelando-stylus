@@ -48,57 +48,53 @@ div.page-receita
                   i.icon.icon-doc-1
 
 
-      div.col-md-8(ng-if="Receita")
+      div.col-md-8(ng-if="recipe")
 
         article.l-receita-content
 
-          h1.l-receita-title {{Receita.nome}}
+          h1.l-receita-title {{ recipe.name }}
 
           div.l-receita-image
-            img.img-responsive(src="assets/images/static/steak-with-potatoes.jpg")
+            img.img-responsive(ng-src="assets/images/super-static/{{recipe.image}}")
 
           div.l-receita-info.row
             ul
               li.col-md-4
                 h5
                   i.icon.icon-clock-1 
-                  div.l-receita-info-caption 15 min
+                  div.l-receita-info-caption 
+                    |{{ recipe.preparationTime }} min
               li.col-md-4
                 h5
                   i.icon.icon-user-1 
-                  div.l-receita-info-caption Para três
+                  div.l-receita-info-caption
+                    |{{ recipe.numberOfPortions }} porções
               li.col-md-4
                 h5
                   i.icon.icon-beaker-1 
-                  div.l-receita-info-caption Fácil
+                  div.l-receita-info-caption {{ recipe.difficulty }}
 
-          h2.l-receita-section-title Ingredientes
+          h3.l-receita-label Ingredientes
 
           div.notepad-block
             div.notepad-block-heading
 
-            div.notepad-item-holder(ng-repeat="item in Receita.ingredientes")
+            div.notepad-item-holder(ng-repeat="ingredient in recipe.ingredients")
               span.notepad-number
                 |{{ $index + 1 }}
               div.notepad-item
-                |{{ item }}
+                |{{ ingredient }}
 
-          h2.l-receita-section-title Modo de Preparo
+          h3.l-receita-label Modo de Preparo
 
           div.notepad-block
             div.notepad-block-heading
 
-            div(ng-repeat="item in Receita.ingredientes")
+            div(ng-repeat="step in recipe.steps")
               span.notepad-number
                 |{{$index+1}}
               div.notepad-item
-                |Bata no liquidificador todos os ingredientes por mais ou menos dez minutos e meio
+                |{{ step }}
               div.notepad-item
                 &nbsp;
             
-
-        //- h1 {{Receita.nome}} - 
-        //-   span.text-info Dificuldade: {{Receita.dificuldade}}
-
-        //- h3 Porções: {{Receita.num_porcoes}}
-

@@ -20,10 +20,22 @@ function($scope, $http, $log, $upload, $receitas) {
 		var extension = $scope.recipe.image[0].name.split('.')[1];
  		var fileName = Date.now() + '.' + extension;
 
- 		$log.info(fileName);
+ 		var steps = [];
+ 		var ingredients = [];
+
+		angular.forEach($scope.recipe.steps, function(step) {
+			steps.push(step.name);
+		});
+
+		angular.forEach($scope.recipe.ingredients, function(ingredient) {
+			ingredients.push(ingredient.name);
+		});
+
+		steps = JSON.stringify(steps);
+		ingredients = JSON.stringify(ingredients);
 
 		$http({
-		  url: "api/insert.php", 
+		  url: "api/save.php", 
 		  method: "POST",
 		  data: $.param({
 		  	'name': $scope.recipe.name,
@@ -31,8 +43,8 @@ function($scope, $http, $log, $upload, $receitas) {
 				'preparation_time': $scope.recipe.preparationTime,
 				'number_of_portions': $scope.recipe.numberOfPortions,
 				'difficulty': $scope.recipe.difficulty.selected.value,
-				'ingredients': $scope.recipe.ingredients,
-				'steps': $scope.recipe.steps,
+				'ingredients': ingredients,
+				'steps': steps,
 		  }),
 		  headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}
 		})
@@ -40,20 +52,20 @@ function($scope, $http, $log, $upload, $receitas) {
 			$log.info(data);
 		});
 
-		$scope.upload = $upload.upload({
-			url: 'api/save.php',
-			method: 'POST',
-			data: { 
-				'image': $scope.recipe.image, 
-				'file_name': fileName
-			},
-			headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
-			file: $scope.recipe.image[0]
-		}).progress(function(evt) {
-			$log.info('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-		}).success(function(data, status, headers, config) {
-			$log.info(data);
-		});
+		// $scope.upload = $upload.upload({
+		// 	url: 'api/save.php',
+		// 	method: 'POST',
+		// 	data: { 
+		// 		'image': $scope.recipe.image, 
+		// 		'file_name': fileName
+		// 	},
+		// 	headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
+		// 	file: $scope.recipe.image[0]
+		// }).progress(function(evt) {
+		// 	$log.info('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+		// }).success(function(data, status, headers, config) {
+		// 	$log.info(data);
+		// });
 
  	};
 
@@ -73,27 +85,6 @@ function($scope, $http, $log, $upload, $receitas) {
 		ingredients: [],
 		steps: []
 	};
-
-
-	$scope.superUpload = function() {
-		var file = $scope.recipe.images[0];
-
-		$scope.upload = $upload.upload({
-			url: 'api/save.php',
-			method: 'POST',
-			data: $.param({
-				'image': $scope.recipe.image,
-				'name': $scope.receita.name
-			}),
-			headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
-			file: file
-		}).progress(function(evt) {
-			console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-		}).success(function(data, status, headers, config) {
-			console.log(data);
-		});
-	};
-
 
 	$scope.onFileSelect = function($files) {
 		for (var i = 0; i < $files.length; i++) {
@@ -158,37 +149,20 @@ function($scope, $http, $log, $upload, $receitas) {
 '$receitas',
 function($scope, $log, $routeParams, $receitas) {
 
-		var id = $routeParams.id;
+	var id = $routeParams.id;
 
-		$scope.recipe = {};
+	$scope.recipe = {};
 
-		$receitas.get(id, function(data) {
-			$log.info(data);
-			$scope.recipe.name = data.nome;
-			$scope.recipe.image = data.imagem;
-			$scope.recipe.preparationTime = data.tempo_preparo;
-			$scope.recipe.numberOfPortions = data.num_porcoes;
-			$scope.recipe.difficulty = data.dificuldade;
-			$scope.recipe.ingredients = $.parseJSON(data.ingredientes);
-			$scope.recipe.steps = $.parseJSON(data.modo_preparo);
-		});
+	$receitas.get(id, function(data) {
+		$scope.recipe.name = data.nome;
+		$scope.recipe.image = data.imagem;
+		$scope.recipe.preparationTime = data.tempo_preparo;
+		$scope.recipe.numberOfPortions = data.num_porcoes;
+		$scope.recipe.difficulty = data.dificuldade;
+		// $scope.recipe.ingredients = $.parseJSON(data.ingredientes);
+		$scope.recipe.ingredients = $.parseJSON(data.modo_preparo);
+		$scope.recipe.steps = $.parseJSON(data.modo_preparo);
+		$log.info($scope.recipe.ingredients);
+	});
 
-
-
-	$scope.recipe = {
-		name: '',
-		image: [],
-		preparationTime: '',
-		numberOfPortions: '',
-		difficulty: {
-			selected: {},
-			options: [
-				{name: 'Fácil', value: 1},
-				{name: 'Médio', value: 2},
-				{name: 'Difícil', value: 3}
-			]
-		},
-		ingredients: [],
-		steps: []
-	};
-	}])
+}])

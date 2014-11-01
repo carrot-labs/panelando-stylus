@@ -1,16 +1,10 @@
 <?php
+ini_set('default_charset', 'utf-8');
 include('connect.php');
 include('functions.php');
 
+
 extract($_POST);
-
-$foo = array();
-foreach($ingredients as $ingredient) { array_push($foo, $ingredient['name']); }
-$ingredients = json_encode($foo);
-
-$foo = array();
-foreach($steps as $step) { array_push($foo, $step['name']); }
-$steps = json_encode($foo);
 
 save(
 	'receitas', 
