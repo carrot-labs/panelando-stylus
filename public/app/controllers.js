@@ -54,8 +54,6 @@ function($scope, $http, $log, $upload, $receitas) {
 		}).success(function(data, status, headers, config) {
 			$log.info(data);
 		});
-	
-
 
  	};
 
@@ -153,19 +151,44 @@ function($scope, $http, $log, $upload, $receitas) {
 
  	}])
 
-// .controller('ReceitaController', [
-// 	'$scope',
-// 	'$routeParams',
-// 	'$receitas',
-// 	function($scope, $routeParams, $receitas) {
+.controller('ReceitaController', [
+'$scope',
+'$log',
+'$routeParams',
+'$receitas',
+function($scope, $log, $routeParams, $receitas) {
 
-// 		var id = $routeParams.id;
+		var id = $routeParams.id;
 
-// 		var string = "[\"leite\", \"acucar\"]";
+		$scope.recipe = {};
 
-// 		$receitas.get(id, function(data) {
-// 			$scope.Receita = data;
-// 			$scope.Receita.ingredientes = jQuery.parseJSON(data.ingredientes);
-// 		});
+		$receitas.get(id, function(data) {
+			$log.info(data);
+			$scope.recipe.name = data.nome;
+			$scope.recipe.image = data.imagem;
+			$scope.recipe.preparationTime = data.tempo_preparo;
+			$scope.recipe.numberOfPortions = data.num_porcoes;
+			$scope.recipe.difficulty = data.dificuldade;
+			$scope.recipe.ingredients = $.parseJSON(data.ingredientes);
+			$scope.recipe.steps = $.parseJSON(data.modo_preparo);
+		});
 
-// 	}])
+
+
+	$scope.recipe = {
+		name: '',
+		image: [],
+		preparationTime: '',
+		numberOfPortions: '',
+		difficulty: {
+			selected: {},
+			options: [
+				{name: 'Fácil', value: 1},
+				{name: 'Médio', value: 2},
+				{name: 'Difícil', value: 3}
+			]
+		},
+		ingredients: [],
+		steps: []
+	};
+	}])
