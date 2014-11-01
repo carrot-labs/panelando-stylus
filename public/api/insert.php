@@ -1,26 +1,37 @@
 <?php
 include('connect.php');
+include('functions.php');
 
+extract($_POST);
 
-$nome = 'Brigadeiro';
-$ingredientes = '["chocolate em p\u00f3","leite condensado","leite","creme de leite","a\u00e7ucar"]';
-$modo_preparo = '["Bata o leite","Coloque no forno","Bom apetite"]';
-$num_porcoes = 12;
-$tempo_preparo = '30 min';
-$dificuldade = 2;
+$foo = array();
+foreach($ingredients as $ingredient) { array_push($foo, $ingredient['name']); }
+$ingredients = json_encode($foo);
 
+$foo = array();
+foreach($steps as $step) { array_push($foo, $step['name']); }
+$steps = json_encode($foo);
 
+$image = 'fake.png';
 
-
-$sql = "INSERT INTO receitas (nome, ingredientes, modo_preparo, num_porcoes, tempo_preparo, dificuldade) VALUES (:nome, :ingredientes, :modo_preparo, :num_porcoes, :tempo_preparo, :dificuldade)";
-
-$insertion = $db->prepare($sql);
-
-$insertion->execute(array(
-	':nome' 					=> $nome,
-	':ingredientes' 	=> $ingredientes,
-	':modo_preparo' 	=> $modo_preparo,
-	':num_porcoes' 		=> $num_porcoes,
-	':tempo_preparo' 	=> $tempo_preparo,
-	':dificuldade'		=> $dificuldade
-));
+save(
+	'receitas', 
+	array(
+		'nome', 
+		'imagem', 
+		'tempo_preparo', 
+		'num_porcoes', 
+		'dificuldade', 
+		'ingredientes', 
+		'modo_preparo'
+	),
+	array(
+		$name,
+		$image,
+		$preparation_time,
+		$number_of_portions,
+		$difficulty
+		$ingredients,
+		$steps
+	)
+);

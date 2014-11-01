@@ -84,10 +84,10 @@
             <div data-ng-repeat="ingredient in recipe.ingredients" class="notepad-item-holder"><span class="notepad-number">
                  
                 {{ $index + 1 }}</span>
-              <div data-ng-if="!ingredient.editing" data-ng-click="editIngredient($index)" class="notepad-item">{{ ingredient.description }}</div>
-              <input type="text" data-ng-if="ingredient.editing" data-ng-value="ingredient.description" data-ng-model="ingredients[$index].description" data-ng-keydown="saveIngredient($event, $index, true)" focus="ingredient.editing" class="notepad-item editing"/>
+              <div data-ng-if="!ingredient.editing" data-ng-click="editIngredient($index)" class="notepad-item">{{ ingredient.name }}</div>
+              <input type="text" data-ng-if="ingredient.editing" data-ng-value="ingredient.name" data-ng-model="ingredient.name" data-ng-keydown="saveIngredient($event, $index, true)" focus="ingredient.editing" class="notepad-item editing"/>
             </div>
-            <input placeholder="Digite o ingrediente e aperte enter" data-ng-model="newIngredient.description" data-ng-keydown="addIngredient($event)" class="notepad-item"/>
+            <input placeholder="Digite o ingrediente e aperte enter" data-ng-model="newIngredient.name" data-ng-keydown="addIngredient($event)" class="notepad-item"/>
           </div>
           <h3 class="l-receita-label">Modo de Preparo</h3>
           <div class="notepad-block">
@@ -95,10 +95,10 @@
             <div data-ng-repeat="step in recipe.steps" class="notepad-item-holder"><span class="notepad-number">
                  
                 {{ $index + 1 }}</span>
-              <div data-ng-if="!step.editing" data-ng-click="editStep($index)" class="notepad-item">{{ step.description }}</div>
-              <input type="text" data-ng-if="step.editing" data-ng-value="step.description" data-ng-model="steps[$index].description" data-ng-keydown="saveStep($event, $index, true)" focus="step.editing" class="notepad-item editing"/>
+              <div data-ng-if="!step.editing" data-ng-click="editStep($index)" class="notepad-item">{{ step.name }}</div>
+              <input type="text" data-ng-if="step.editing" data-ng-value="step.name" data-ng-model="step.name" data-ng-keydown="saveStep($event, $index, true)" focus="step.editing" class="notepad-item editing"/>
             </div>
-            <input placeholder="Digite a instrução e aperte enter" data-ng-model="newStep.description" data-ng-keydown="addStep($event)" class="notepad-item"/>
+            <input placeholder="Digite a instrução e aperte enter" data-ng-model="newStep.name" data-ng-keydown="addStep($event)" class="notepad-item"/>
           </div>
           <button type="submit" data-ng-click="saveRecipe()" class="l-receita-btn-submit btn-lg"><i class="icon icon-ok">  </i>Salvar Receita</button>
         </article>

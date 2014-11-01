@@ -128,20 +128,20 @@ div.page-receita
                 data-ng-if="!ingredient.editing"
                 data-ng-click="editIngredient($index)"
               )
-                |{{ ingredient.description }}
+                |{{ ingredient.name }}
 
               input.notepad-item.editing(
                 type="text",
                 data-ng-if="ingredient.editing"
-                data-ng-value="ingredient.description"
-                data-ng-model="ingredients[$index].description"
+                data-ng-value="ingredient.name"
+                data-ng-model="ingredient.name"
                 data-ng-keydown="saveIngredient($event, $index, true)"
                 focus="ingredient.editing"
               )  
 
             input.notepad-item(
               placeholder="Digite o ingrediente e aperte enter"
-              data-ng-model="newIngredient.description"
+              data-ng-model="newIngredient.name"
               data-ng-keydown="addIngredient($event)"
             )
 
@@ -160,20 +160,20 @@ div.page-receita
                 data-ng-if="!step.editing"
                 data-ng-click="editStep($index)"
               )
-                |{{ step.description }}
+                |{{ step.name }}
 
               input.notepad-item.editing(
                 type="text",
                 data-ng-if="step.editing"
-                data-ng-value="step.description"
-                data-ng-model="steps[$index].description"
+                data-ng-value="step.name"
+                data-ng-model="step.name"
                 data-ng-keydown="saveStep($event, $index, true)"
                 focus="step.editing"
               )  
 
             input.notepad-item(
               placeholder="Digite a instrução e aperte enter"
-              data-ng-model="newStep.description"
+              data-ng-model="newStep.name"
               data-ng-keydown="addStep($event)"
             )
 
