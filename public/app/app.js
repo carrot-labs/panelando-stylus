@@ -16,14 +16,14 @@ angular.module('panelando', ['ngRoute', 'ngFileUpload'])
 			controller: 'ReceitasController'
 		})
 
-		.when('/receitas/{:id}', {
-			templateUrl: 'views/receita.html',
-			controller: 'ReceitaController'
-		})
-
 		.when('/receitas/nova', {
 			templateUrl: 'views/nova-receita.html',
 			controller: 'NovaReceitaController'
+		})
+
+		.when('/receitas/:id', {
+			templateUrl: 'views/receita.html',
+			controller: 'ReceitaController'
 		})
 
 		.otherwise({redirectTo: '/'});

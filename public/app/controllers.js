@@ -159,10 +159,23 @@ function($scope, $log, $routeParams, $receitas) {
 		$scope.recipe.preparationTime = data.tempo_preparo;
 		$scope.recipe.numberOfPortions = data.num_porcoes;
 		$scope.recipe.difficulty = data.dificuldade;
-		// $scope.recipe.ingredients = $.parseJSON(data.ingredientes);
-		$scope.recipe.ingredients = $.parseJSON(data.modo_preparo);
+		$scope.recipe.ingredients = $.parseJSON(data.ingredients);
 		$scope.recipe.steps = $.parseJSON(data.modo_preparo);
 		$log.info($scope.recipe.ingredients);
 	});
 
+}])
+
+.controller('ReceitasController', [
+'$scope',
+'$log',
+'$receitas',
+function($scope, $log, $receitas) {
+
+	$scope.recipes = [];
+
+	$receitas.getAll(function(data) {
+		$scope.recipes = data;
+		$log.info(data);
+	});
 }])
