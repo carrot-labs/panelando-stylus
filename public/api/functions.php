@@ -28,6 +28,25 @@ function get($table, $id) {
 	return $result;
 }
 
+function getPage($table, $limit, $offset) {
+	global $pdo;
+
+	$selection = $pdo->prepare("SELECT * FROM $table LIMIT :offset,:limit");
+	$selection->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+	$selection->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
+	$selection->execute();
+
+	$results = array();
+
+	while($result = $selection->fetch(PDO::FETCH_ASSOC)) {
+		array_push($results, $result);
+	}
+
+	return $results;
+}
+
+
+
 function save($table, $fields, $values) {
 	global $pdo;
 

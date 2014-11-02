@@ -1,4 +1,4 @@
-div.page-home
+div.page-home.page-receita
   nav.navbar.navbar-default(role="navigation")
     div.container
       //- Brand and toggle get grouped for better mobile display
@@ -28,13 +28,13 @@ div.page-home
         //-- Main menu
         nav.main-menu(role="navigation")
           ul.nav.nav-pills.nav-stacked
-            li.active
+            li
               a(href="#/")
                 |Home
                 div.link-icon
                   i.icon.icon-shop
 
-            li
+            li.active
               a(href="#/receitas")
                 |Receitas
                 div.link-icon
@@ -80,6 +80,55 @@ div.page-home
             span.icon.icon-right-open
 
   div.container
+
+    div.col-md-4(data-ng-repeat="receita in receitas")
+      div.recipe-block
+        a(href="#/receitas/{{receita.id}}")
+          div.recipe-block-title
+            |{{receita.nome}}
+
+          div.recipe-block-image
+            div.recipe-block-caption
+              div.item
+                i.icon.icon-clock-1
+                span {{receita.tempo_preparo}} Min
+
+              div.item
+                i.icon.icon-user-1
+                span {{receita.num_porcoes}} Porções
+
+              div.item
+                i.icon.icon-beaker-1
+                span {{receita.dificuldade | recipeDifficulty}}
+
+            img.img-responsive(data-ng-src="assets/images/static/{{receita.imagem}}")
+
+          div.recipe-block-footer
+            div.pull-left
+              strong Postado em:
+              em 14/12/2014
+            a.link(href="#/receitas/{{receita.id}}")
+              i.icon.icon-plus-squared-alt
+              |Ver Receita
+              
+
+    div.row
+      a.l-receita-btn-submit.btn-lg.pull-left(
+        href="#/page/{{prevPageLink}}",
+        data-ng-click="saveRecipe()",
+        data-ng-show="hasPrev && !isFirstPage"
+
+      )
+        |Anterior
+
+      a.l-receita-btn-submit.btn-lg.pull-right(
+        href="#/page/{{nextPageLink}}",
+        data-ng-click="saveRecipe()",
+        data-ng-show="hasNext"
+      )
+        |Próxima
+
+
     div.row.l-main-section
       div.col-md-4(data-ng-repeat="recipe in recipes")
         div.recipe-block

@@ -25,5 +25,10 @@ angular.module('panelando', ['ngRoute', 'ngFileUpload'])
 			controller: 'SingleRecipeController'
 		})
 
+		.when('/page/:id', {
+			templateUrl: 'views/receitas.html',
+			controller: 'TestController'
+		})
+
 		.otherwise({redirectTo: '/'});
 }])
