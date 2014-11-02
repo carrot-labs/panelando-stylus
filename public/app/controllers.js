@@ -159,9 +159,9 @@ function($scope, $log, $routeParams, $receitas) {
 		$scope.recipe.preparationTime = data.tempo_preparo;
 		$scope.recipe.numberOfPortions = data.num_porcoes;
 		$scope.recipe.difficulty = data.dificuldade;
-		$scope.recipe.ingredients = $.parseJSON(data.ingredients);
+		$scope.recipe.ingredients = $.parseJSON(data.ingredientes);
 		$scope.recipe.steps = $.parseJSON(data.modo_preparo);
-		$log.info($scope.recipe.ingredients);
+		$log.info(data.modo_preparo);
 	});
 
 }])
