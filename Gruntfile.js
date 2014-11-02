@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         separator: ';',
       },
       angularApp: {
-        src: ['src/app/*.js'],
+        src: ['src/app/**/*.js'],
         dest: 'public/assets/javascripts/app.js',
       },
       javascripts: {

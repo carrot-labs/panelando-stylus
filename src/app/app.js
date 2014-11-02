@@ -7,23 +7,22 @@ angular.module('panelando', ['ngRoute', 'ngFileUpload'])
 
 	$routeProvider
 		.when('/', {
-			templateUrl: 'views/home.html',
-			controller: 'HomeController'
+			templateUrl: 'views/home.html'
 		})
 
 		.when('/receitas', {
 			templateUrl: 'views/receitas.html',
-			controller: 'ReceitasController'
+			controller: 'AllRecipesController'
 		})
 
 		.when('/receitas/nova', {
 			templateUrl: 'views/nova-receita.html',
-			controller: 'NovaReceitaController'
+			controller: 'NewRecipeController'
 		})
 
 		.when('/receitas/:id', {
 			templateUrl: 'views/receita.html',
-			controller: 'ReceitaController'
+			controller: 'SingleRecipeController'
 		})
 
 		.otherwise({redirectTo: '/'});
