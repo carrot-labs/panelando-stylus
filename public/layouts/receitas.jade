@@ -99,7 +99,7 @@ div.page-home
 
                 div.item
                   i.icon.icon-beaker-1
-                  span {{recipe.dificuldade}}
+                  span {{recipe.dificuldade | recipeDifficulty}}
 
               img.img-responsive(data-ng-src="assets/images/super-static/{{recipe.imagem}}")
 

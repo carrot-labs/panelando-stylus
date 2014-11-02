@@ -161,7 +161,6 @@ function($scope, $log, $routeParams, $receitas) {
 		$scope.recipe.difficulty = data.dificuldade;
 		$scope.recipe.ingredients = $.parseJSON(data.ingredientes);
 		$scope.recipe.steps = $.parseJSON(data.modo_preparo);
-		$log.info(data.modo_preparo);
 	});
 
 }])
@@ -178,4 +177,22 @@ function($scope, $log, $receitas) {
 		$scope.recipes = data;
 		$log.info(data);
 	});
+}])
+
+.filter('recipeDifficulty', [function() {
+	return function(level) {
+		switch(level){
+			case "1":
+				return "Fácil";	
+				break;
+			case "2":
+				return "Médio";	
+				break;
+			case "3":
+				return "Difícil";	
+				break;
+			default:
+				break;
+		}
+	};
 }])

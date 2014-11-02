@@ -61,7 +61,7 @@
               <div class="recipe-block-caption">
                 <div class="item"><i class="icon icon-clock-1"></i><span>{{recipe.tempo_preparo}} Min</span></div>
                 <div class="item"><i class="icon icon-user-1"></i><span>{{recipe.num_porcoes}} Porções</span></div>
-                <div class="item"><i class="icon icon-beaker-1"></i><span>{{recipe.dificuldade}}</span></div>
+                <div class="item"><i class="icon icon-beaker-1"></i><span>{{recipe.dificuldade | recipeDifficulty}}</span></div>
               </div><img data-ng-src="assets/images/super-static/{{recipe.imagem}}" class="img-responsive"/>
             </div>
             <div class="recipe-block-footer">
