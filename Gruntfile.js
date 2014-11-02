@@ -50,12 +50,16 @@ module.exports = function(grunt) {
 
     watch: {
       stylesheets: {
-        files: ['public/assets/stylesheets/sass/**/*.sass', 'public/assets/stylesheets/sass/**/*.scss'],
+        files: ['src/assets/stylesheets/**/*.sass', 'src/assets/stylesheets/**/*.scss'],
         tasks: ['sass'],
       },
-      layouts: {
-        files: ['public/layouts/*.jade'],
+      views: {
+        files: ['src/views/**/*.jade'],
         tasks: ['jade'],
+      },
+      scripts: {
+        files: ['src/app/**/*.js', 'src/assets/javascripts/**/*.js'],
+        tasks: ['concat'],
       },
     },
   });
@@ -65,7 +69,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['sass', 'jade', 'watch']);
+  grunt.registerTask('default', ['sass', 'jade', 'concat', 'watch']);
   grunt.registerTask('c', ['concat']);
   grunt.registerTask('s', ['sass']);
   grunt.registerTask('j', ['jade']);

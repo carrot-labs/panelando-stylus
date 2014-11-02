@@ -34,26 +34,26 @@ function($scope, $http, $log, $upload, $receitas) {
 		steps = JSON.stringify(steps);
 		ingredients = JSON.stringify(ingredients);
 
-		$http({
-		  url: "api/save.php", 
-		  method: "POST",
-		  data: $.param({
-		  	'name': $scope.recipe.name,
-		  	'image': fileName,
-				'preparation_time': $scope.recipe.preparationTime,
-				'number_of_portions': $scope.recipe.numberOfPortions,
-				'difficulty': $scope.recipe.difficulty.selected.value,
-				'ingredients': ingredients,
-				'steps': steps,
-		  }),
-		  headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}
-		})
-		.success(function(data, status) {
-			$log.info(data);
-		});
+		// $http({
+		//   url: "api/save.php", 
+		//   method: "POST",
+		//   data: $.param({
+		//   	'name': $scope.recipe.name,
+		//   	'image': fileName,
+		// 		'preparation_time': $scope.recipe.preparationTime,
+		// 		'number_of_portions': $scope.recipe.numberOfPortions,
+		// 		'difficulty': $scope.recipe.difficulty.selected.value,
+		// 		'ingredients': ingredients,
+		// 		'steps': steps,
+		//   }),
+		//   headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}
+		// })
+		// .success(function(data, status) {
+		// 	$log.info(data);
+		// });
 
 		$scope.upload = $upload.upload({
-			url: 'api/save.php',
+			url: 'api/saveImage.php',
 			method: 'POST',
 			data: { 
 				'image': $scope.recipe.image, 
