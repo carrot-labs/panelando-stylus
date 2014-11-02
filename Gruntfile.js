@@ -9,7 +9,7 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: {                         // Dictionary of files
-          'public/assets/stylesheets/style.css': 'public/assets/stylesheets/sass/style.sass'       // 'destination': 'source'
+          'public/assets/stylesheets/style.css': 'src/assets/stylesheets/style.sass'       // 'destination': 'source'
         }
       }
     },
@@ -24,15 +24,28 @@ module.exports = function(grunt) {
         },
         files: [
           { 
-            cwd: 'public/layouts/',
-            src: '**/*.jade',
-            dest: 'public/views',
+            cwd: 'src',
+            src: ['**/*.jade'],
+            dest: 'public',
             expand: true,
             ext: '.html'
           },
-          {"public/index.html": "public/layouts/index.jade"}
         ]
       }
+    },
+
+    concat: {
+      options: {
+        separator: ';',
+      },
+      angularApp: {
+        src: ['src/app/*.js'],
+        dest: 'public/assets/javascripts/app.js',
+      },
+      javascripts: {
+        src: ['src/assets/javascripts/**/*.js'],
+        dest: 'public/assets/javascripts/main.js'
+      },
     },
 
     watch: {
@@ -49,9 +62,12 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['sass', 'jade', 'watch']);
+  grunt.registerTask('c', ['concat']);
+  grunt.registerTask('s', ['sass']);
   grunt.registerTask('j', ['jade']);
 
 };
