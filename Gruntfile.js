@@ -30,6 +30,7 @@ module.exports = function(grunt) {
             expand: true,
             ext: '.html'
           },
+          {"public/index.html": "src/views/index.jade"},
         ]
       }
     },

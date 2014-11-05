@@ -1,7 +1,7 @@
 /**
  * Set the angular module
  */
-angular.module('panelando', ['ngRoute', 'ngFileUpload'])
+var app = angular.module('panelando', ['ngRoute', 'ngAnimate', 'ngFileUpload'])
 
 .config(['$routeProvider', function($routeProvider) {
 

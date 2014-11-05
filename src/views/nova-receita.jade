@@ -1,4 +1,6 @@
 div.page-receita
+  div.navbar-topping
+
   nav.navbar.navbar-default(role="navigation")
     div.container
       //- Brand and toggle get grouped for better mobile display
@@ -13,14 +15,6 @@ div.page-receita
           |Panelando
           div.navbar-brand-icon
             i.icon.icon-food-1
-
-      //- Collect the nav links, forms, and other content for toggling
-      div.collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
-        ul.nav.navbar-nav.navbar-right
-          li
-            a(href="#") Login
-          li
-            a(href="#") Cadastrar
    
 
   div.container
@@ -29,7 +23,7 @@ div.page-receita
         //-- Main menu
         nav.main-menu(role="navigation")
           ul.nav.nav-pills.nav-stacked
-            li.active
+            li
               a(href="#/")
                 |Home
                 div.link-icon
@@ -41,7 +35,7 @@ div.page-receita
                 div.link-icon
                   i.icon.icon-food-1
 
-            li
+            li.active
               a(href="#/receitas/nova")
                 |Nova Receita
                 div.link-icon
@@ -89,7 +83,7 @@ div.page-receita
                   div.l-receita-info-caption
                     div.l-receita-info-input
                       input.form-control(
-                        data-ng-model="recipe.numberOfPortions"
+                        data-ng-model="recipe.preparationTime"
                       )
                     | &nbsp;min
               li.col-md-4
@@ -98,7 +92,7 @@ div.page-receita
                   div.l-receita-info-caption
                     div.l-receita-info-input
                       input.form-control(
-                        data-ng-model="recipe.preparationTime"
+                        data-ng-model="recipe.numberOfPortions"
                       )
                     | &nbsp;porções
               li.col-md-4
@@ -184,3 +178,16 @@ div.page-receita
             |Salvar Receita
 
 
+
+  footer.footer
+    div.container
+      div.pull-left
+        span.semi 2014 &copy; Panelando - Todos os Direitos Reservados
+      div.pull-right
+        i.octicon.octicon-code
+        span.thin &nbsp; com &nbsp;
+        i.octicon.octicon-heart
+        span.thin &nbsp; por 
+        span.bold Gui 
+        span.thin e 
+        span.bold Sam
